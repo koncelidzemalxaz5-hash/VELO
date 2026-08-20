@@ -4224,3 +4224,12 @@ console.log("🏆 VIP Achievement Toast 5.3 готов.");
   })();
 
 })();
+
+/* ===== VELO PWA SERVICE WORKER ===== */
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("VELO PWA: Service Worker registered"))
+      .catch(error => console.error("VELO PWA: Service Worker failed:", error));
+  });
+}
