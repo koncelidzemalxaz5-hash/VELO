@@ -5764,3 +5764,43 @@ button {
 
 /* ===== END V15 NEON SOCIAL ===== */
 
+
+/* V15 Social — visible search input */
+#socialUsername {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.35);
+  caret-color: #ffffff;
+}
+
+#socialUsername::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* ===== VELO SELECTED COLORS ===== */
+
+/* Ярко-зелёные основные показатели поездки */
+#activeRideSpeed,
+#activeRideMaxSpeed,
+#activeRideDistance,
+#activeRideElevation,
+#finishRideAverageSpeed,
+#finishRideMaxSpeed,
+#finishRidePreviewDistance,
+#finishRideDistance,
+#finishRideElevation,
+#profileKm {
+  color: #00ff66 !important;
+}
+
+/* Золотистая кнопка «Начать поездку» */
+#startRide {
+  background: linear-gradient(135deg, #d4af37, #f1c75b) !important;
+  color: #111 !important;
+  border-color: #f1c75b !important;
+}
+
+#startRide:hover {
+  background: linear-gradient(135deg, #f1c75b, #ffd978) !important;
+}
+
