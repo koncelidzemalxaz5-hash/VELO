@@ -3777,7 +3777,7 @@ console.log("🏆 VIP Achievement Toast 5.3 готов.");
     return;
   }
 
-  const API_BASE = "http://127.0.0.1:8080";
+  const API_BASE = "https://paragraphs-determining-defeat-adventures.trycloudflare.com";
 
   async function searchUser() {
     const username = usernameInput.value.trim().replace(/^@/, "");
@@ -3870,7 +3870,7 @@ console.log("🏆 VIP Achievement Toast 5.3 готов.");
     return;
   }
 
-  const API_BASE = "http://127.0.0.1:8080";
+  const API_BASE = "https://paragraphs-determining-defeat-adventures.trycloudflare.com";
 
   /*
    * Тестовый пользователь.
