@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0f14">
+  <title>VELO</title>
+  <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.svg">
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="logo">VELO</div>
+  <button class="profile-btn" data-page="profile">👤</button>
+</header>
+
+<main>
+
+  <section class="page active-page" id="home">
+    <!-- ===== SIMPLE QR + LINK ===== -->
+    <section class="simple-share" id="simpleShare">
+      <div class="simple-share-title">
+        <span>📲</span>
+        <div>
+          <strong>Поделиться VELO</strong>
+          <small>Отправь друзьям ссылку или QR-код</small>
+        </div>
+      </div>
+
+      <div class="simple-share-body">
+        <img
+          class="simple-share-qr"
+          src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data=https%3A%2F%2Fvelo.app"
+          alt="QR-код VELO"
+        >
+
+        <div class="simple-share-link">
+          <span>Ссылка на VELO</span>
+          <a href="#" id="simpleVeloLink">Открыть VELO</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="hero">
+      <p class="eyebrow">YOUR RIDE · YOUR ROAD</p>
+      <h1>Велосипедная<br><span>сеть.</span></h1>
+      <p class="hero-text">
+        Маршруты, поездки, друзья и всё необходимое
+        для твоего следующего заезда.
+      </p>
+
+      <button class="primary-btn" id="startRide">
+        🚴 Начать поездку
+      </button>
+    </div>
+
+    <!-- ===== FINISH RIDE MODAL ===== -->
+    <div class="finish-ride-modal" id="finishRideModal" style="display:none;">
+      <div class="finish-ride-overlay"></div>
+
+      <div class="finish-ride-card">
+        <div class="finish-ride-icon">🏁</div>
+
+        <h2>Поездка завершена</h2>
+        <p>Отличная работа! Сохрани результаты поездки.</p>
+
+        <label>
+          📏 Расстояние, км
+          <input
+            id="finishRideDistance"
+            type="number"
+            min="0"
+            step="0.1"
+            value="0"
+          >
+        </label>
+
+        <label>
+          ⛰️ Набор высоты, м
+          <input
+            id="finishRideElevation"
+            type="number"
+            min="0"
+            step="1"
+            value="0"
+          >
+        </label>
+
+        <div class="finish-ride-speed-summary">
+          <div>
+            <span class="finish-ride-stat-icon">⚡</span>
+            <strong id="finishRideAverageSpeed">0.0</strong>
+            <small>средняя км/ч</small>
+          </div>
+
+          <div>
+            <span class="finish-ride-stat-icon">🏆</span>
+            <strong id="finishRideMaxSpeed">0.0</strong>
+            <small>макс. км/ч</small>
+          </div>
+        </div>
+
+        <div class="finish-ride-summary">
+          <div>
+            <strong id="finishRideDuration">00:00</strong>
+            <span>время</span>
+          </div>
+
+          <div>
+            <strong id="finishRidePreviewDistance">0.0</strong>
+            <span>км</span>
+          </div>
+        </div>
+
+        <div class="finish-ride-actions">
+          <button
+            type="button"
+            class="secondary-btn"
+            id="cancelFinishRide"
+          >
+            Отмена
+          </button>
+
+          <button
+            type="button"
+            class="primary-btn"
+            id="saveFinishedRide"
+          >
+            💾 Сохранить
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ACTIVE RIDE ===== -->
+    <section class="active-ride-panel" id="activeRidePanel" style="display:none;">
+      <div class="active-ride-header">
+        <span class="eyebrow">ACTIVE RIDE</span>
+        <h2>🚴 Поездка началась</h2>
+      </div>
+
+      <div class="active-ride-time" id="activeRideTime">00:00:00</div>
+
+
+      <div class="active-ride-dashboard">
+
+  <div class="ride-dashboard-main">
+    <div class="ride-dashboard-speed">
+      <span class="ride-dashboard-label">⚡ СКОРОСТЬ</span>
+      <div class="ride-dashboard-speed-value">
+        <strong id="activeRideSpeed">0.0</strong>
+        <span>км/ч</span>
+      </div>
+      <div class="ride-dashboard-max">
+        Макс. <strong id="activeRideMaxSpeed">0.0</strong> км/ч
+      </div>
+    </div>
+  </div>
+
+  <div class="ride-dashboard-gps">
+    <span id="activeRideGpsStatus">📍 GPS определение...</span>
+    <span class="ride-dashboard-gps-accuracy">
+      Точность: <strong id="activeRideGpsAccuracy">—</strong>
+    </span>
+  </div>
+
+  <div class="ride-dashboard-grid">
+
+    <div class="ride-dashboard-item">
+      <span class="ride-dashboard-icon">📍</span>
+      <span class="ride-dashboard-title">РАССТОЯНИЕ</span>
+      <strong><span id="activeRideDistance">0.00</span> км</strong>
+    </div>
+
+    <div class="ride-dashboard-item">
+      <span class="ride-dashboard-icon">⛰️</span>
+      <span class="ride-dashboard-title">НАБОР</span>
+      <strong><span id="activeRideElevation">0</span> м</strong>
+    </div>
+
+  </div>
+
+</div>
+
+      <div class="active-ride-actions">
+        <button class="secondary-btn" id="pauseRide">
+          ⏸ Пауза
+        </button>
+
+        <button class="primary-btn" id="finishActiveRide">
+          🏁 Завершить
+        </button>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat-card">
+        <strong>0</strong>
+        <span>км сегодня</span>
+      </div>
+
+      <div class="stat-card">
+        <strong>0</strong>
+        <span>поездок</span>
+      </div>
+
+      <div class="stat-card">
+        <strong>0</strong>
+        <span>часов</span>
+      </div>
+    </section>
+
+    <section class="menu">
+      <h2>Велосипедистам</h2>
+
+      <div class="menu-grid">
+        <button class="menu-card" data-page="map">
+          <span>🗺️</span>
+          <b>Маршруты</b>
+          <small>Найти путь</small>
+        </button>
+
+        <button class="menu-card" data-page="rides">
+          <span>👥</span>
+          <b>Поездки</b>
+          <small>Кататься вместе</small>
+        </button>
+
+        <button class="menu-card" data-page="chat">
+          <span>💬</span>
+          <b>Велочат</b>
+          <small>Общение</small>
+        </button>
+
+        <button class="menu-card velo-action-card" id="sosCard" type="button">
+          <span>🆘</span>
+          <b>SOS Помощь</b>
+          <small>Проблема в дороге?</small>
+        </button>
+
+        <button class="menu-card velo-action-card" id="nearbyCard" type="button">
+          <span>📍</span>
+          <b>Рядом</b>
+          <small>Всё нужное поблизости</small>
+        </button>
+      </div>
+    </section>
+  </section>
+
+
+  <section class="page" id="map">
+    <div class="section-title">
+      <p class="eyebrow">EXPLORE</p>
+      <h2>🗺️ Карта</h2>
+      <p>Находи маршруты и интересные места для велосипедистов.</p>
+    </div>
+
+    <div class="map-search">
+      <input
+        id="routeSearch"
+        type="search"
+        placeholder="🔎 Поиск маршрута или места"
+      >
+    </div>
+
+    <div class="location-card">
+      <div class="location-icon">📍</div>
+      <div>
+        <b>Моё местоположение</b>
+        <small id="locationStatus">Нажми, чтобы определить позицию</small>
+      </div>
+      <button id="locateMe">Определить</button>
+    </div>
+
+    <div class="map-preview">
+      <div class="map-grid"></div>
+
+      <div class="map-center">
+        <span>📍</span>
+        <b>Карта маршрутов</b>
+        <small>Интерактивная карта будет подключена позже</small>
+      </div>
+    </div>
+
+    <div class="routes-header">
+      <h3>Популярные маршруты</h3>
+      <span id="routeCount"></span>
+    </div>
+
+    <div id="routesList" class="routes-list"></div>
+  </section>
+
+
+  <section class="page" id="rides">
+    <div class="section-title">
+      <p class="eyebrow">COMMUNITY RIDES</p>
+      <h2>🚴 Поездки</h2>
+      <p>Создавай поездки и находи компанию.</p>
+    </div>
+
+    <button class="primary-btn ride-create-btn" id="openRideForm">
+      ＋ Создать поездку
+    </button>
+
+    <form class="ride-form" id="rideForm">
+      <label>
+        Название поездки
+        <input id="rideTitle" type="text" placeholder="Например: Вечерний заезд" required>
+      </label>
+
+      <label>
+        📍 Старт
+        <input id="rideStart" type="text" placeholder="Например: Батумский бульвар" required>
+      </label>
+
+      <label>
+        🏁 Финиш
+        <input id="rideFinish" type="text" placeholder="Например: Чакви" required>
+      </label>
+
+      <div class="form-row">
+        <label>
+          📅 Дата
+          <input id="rideDate" type="date" required>
+        </label>
+
+        <label>
+          🕐 Время
+          <input id="rideTime" type="time" required>
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label>
+          📏 Расстояние, км
+          <input id="rideDistance" type="number" min="0" step="0.1" value="10" required>
+        </label>
+
+        <label>
+          ⏱️ Время, мин
+          <input id="rideDuration" type="number" min="1" value="60" required>
+        </label>
+      </div>
+
+      <label>
+        ⛰️ Набор высоты, м
+        <input id="rideElevation" type="number" min="0" value="0">
+      </label>
+
+      <label>
+        👥 Максимум участников
+        <input id="ridePeople" type="number" min="1" max="100" value="10" required>
+      </label>
+
+      <label>
+        📝 Описание
+        <textarea id="rideDescription" rows="3" placeholder="Расскажи о поездке"></textarea>
+      </label>
+
+      <div class="form-actions">
+        <button type="button" class="secondary-btn" id="cancelRide">
+          Отмена
+        </button>
+
+        <button type="submit" class="primary-btn">
+          Создать
+        </button>
+      </div>
+    </form>
+
+    <div id="ridesList" class="rides-list"></div>
+  </section>
+
+
+  <section class="page" id="chat">
+    <div class="section-title">
+      <p class="eyebrow">VELO SOCIAL</p>
+      <h2>👥 Social</h2>
+      <p>Находи велосипедистов, общайся и собирай компанию.</p>
+    </div>
+
+    <div class="social-search-card">
+      <h3>🔎 Найти велосипедиста</h3>
+
+      <div class="social-search-row">
+        <input
+          id="socialUsername"
+          type="text"
+          placeholder="Username, например test_rider"
+          maxlength="32"
+          autocomplete="off"
+        >
+        <button type="button" id="socialSearchButton">
+          Найти
+        </button>
+      </div>
+
+      <div id="socialSearchResult" class="social-search-result"></div>
+    </div>
+
+    <div class="social-friends-card">
+      <div class="social-friends-header">
+        <h3>👥 Мои друзья</h3>
+        <button type="button" id="socialRefreshFriends">
+          Обновить
+        </button>
+      </div>
+
+      <div id="socialFriends" class="social-friends-list">
+        <div class="social-result-empty">
+          Друзья пока не загружены.
+        </div>
+      </div>
+    </div>
+
+    <div class="social-requests-card">
+      <div class="social-friends-header">
+        <h3>📨 Заявки в друзья</h3>
+        <button type="button" id="socialRefreshRequests">
+          Обновить
+        </button>
+      </div>
+
+      <div id="socialRequests" class="social-requests-list">
+        <div class="social-result-empty">
+          Заявки пока не загружены.
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-user">
+      <label>
+        Твоё имя
+        <input id="chatUsername" type="text" placeholder="Например: Malxaz">
+      </label>
+    </div>
+
+
+    <div class="chat-window" id="chatWindow"></div>
+
+    <form class="chat-form" id="chatForm">
+      <input
+        id="chatMessage"
+        type="text"
+        placeholder="Напиши сообщение..."
+        maxlength="300"
+        autocomplete="off"
+        required
+      >
+      <button type="submit">➤</button>
+    </form>
+
+    <button class="clear-chat" id="clearChat">
+      🗑️ Очистить тестовый чат
+    </button>
+  </section>
+
+
+  <section class="page" id="profile">
+    <div class="section-title">
+      <p class="eyebrow">YOUR PROFILE</p>
+      <h2>👤 Профиль</h2>
+      <p>Твоя велосипедная история и статистика.</p>
+    </div>
+
+    <div class="profile-card">
+      <div class="avatar" id="profileAvatar">🚴</div>
+
+      <div class="profile-main">
+        <input
+          id="profileName"
+          type="text"
+          placeholder="Твоё имя"
+          maxlength="30"
+        >
+        <small>Велосипедист</small>
+        <input
+          id="profileUsername"
+          type="text"
+          placeholder="Username, например Mosse1619"
+          maxlength="32"
+          autocomplete="off"
+        >
+      </div>
+    </div>
+
+    <section class="profile-section">
+      <h3>📊 Статистика</h3>
+
+      <div class="profile-stats">
+        <div class="profile-stat">
+          <strong id="profileKm">0</strong>
+          <span>км</span>
+        </div>
+
+        <div class="profile-stat">
+          <strong id="profileRides">0</strong>
+          <span>поездок</span>
+        </div>
+
+        <div class="profile-stat">
+          <strong id="profileHours">0</strong>
+          <span>часов</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-section">
+      <h3>🚲 Мой велосипед</h3>
+
+      <div class="bike-info-card">
+        <input
+          id="bikeName"
+          type="text"
+          placeholder="Название велосипеда"
+        >
+
+        <input
+          id="bikeType"
+          type="text"
+          placeholder="Тип · например MTB"
+        >
+
+        <button type="button" id="saveBike" class="save-profile-btn">
+          💾 Сохранить велосипед
+        </button>
+      </div>
+    </section>
+
+    <section class="profile-section">
+      <h3>🏆 Достижения</h3>
+
+      <div class="achievements">
+        <div class="achievement">
+          <span>🌱</span>
+          <b>Первый заезд</b>
+          <small>Начни свою историю</small>
+        </div>
+
+        <div class="achievement locked" data-achievement="100km">
+          <span>🔥</span>
+          <b>100 км</b>
+          <small>Проехать 100 км</small>
+          <div class="achievement-progress">
+            <div class="achievement-progress-bar" id="achievement100Bar"></div>
+          </div>
+          <div class="achievement-progress-text" id="achievement100Text">0 / 100 км</div>
+        </div>
+
+        <div class="achievement locked" data-achievement="mountain">
+          <span>⛰️</span>
+          <b>Горный</b>
+          <small>Покорить горный маршрут</small>
+          <div class="achievement-progress">
+            <div class="achievement-progress-bar" id="mountainProgressBar"></div>
+          </div>
+          <div class="achievement-progress-text" id="mountainProgressText">0 / 850 м</div>
+        </div>
+
+        <div class="achievement locked">
+          <span>👥</span>
+          <b>Команда</b>
+          <small>Поехать вместе</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-section">
+      <h3>📜 История поездок</h3>
+
+      <div id="profileHistory" class="history-list">
+        <div class="history-empty">
+          Пока нет завершённых поездок.
+        </div>
+      </div>
+    </section>
+
+  </section>
+
+</main>
+
+
+<nav class="bottom-nav">
+
+  <button class="nav-btn active" data-page="home">
+    🏠
+    <span>Главная</span>
+  </button>
+
+  <button class="nav-btn" data-page="map">
+    🗺️
+    <span>Карта</span>
+  </button>
+
+  <button class="nav-btn" data-page="rides">
+    🚴
+    <span>Поездки</span>
+  </button>
+
+  <button class="nav-btn" data-page="chat">
+    💬
+    <span>Чат</span>
+  </button>
+
+  <button class="nav-btn" data-page="profile">
+    👤
+    <span>Профиль</span>
+  </button>
+
+</nav>
+
+
+<script>
+(() => {
+  const url = window.location.href;
+  const link = document.getElementById("simpleVeloLink");
+  const qr = document.querySelector(".simple-share-qr");
+
+  if (link) {
+    link.href = url;
+    link.textContent = url;
+  }
+
+  if (qr) {
+    qr.src =
+      "https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data=" +
+      encodeURIComponent(url);
+  }
+})();
+</script>
+
+
+<script>
+(() => {
+  const sosCard = document.getElementById("sosCard");
+  const nearbyCard = document.getElementById("nearbyCard");
+
+  function openVeloAction(title, text, buttons) {
+    const old = document.getElementById("veloActionModal");
+    if (old) old.remove();
+
+    const modal = document.createElement("div");
+    modal.id = "veloActionModal";
+    modal.className = "velo-action-modal";
+
+    modal.innerHTML = `
+      <div class="velo-action-overlay"></div>
+      <div class="velo-action-panel">
+        <button class="velo-action-close" type="button">×</button>
+        <div class="velo-action-icon">${title.startsWith("SOS") ? "🆘" : "📍"}</div>
+        <p class="eyebrow">${title.startsWith("SOS") ? "EMERGENCY" : "NEARBY"}</p>
+        <h2>${title}</h2>
+        <p class="velo-action-text">${text}</p>
+        <div class="velo-action-buttons">
+          ${buttons.map((b, i) =>
+            `<button type="button" class="velo-modal-btn ${i === 0 ? "primary" : ""}" data-action="${b.action}">
+              ${b.icon} ${b.text}
+            </button>`
+          ).join("")}
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const close = () => modal.remove();
+
+    modal.querySelector(".velo-action-overlay").onclick = close;
+    modal.querySelector(".velo-action-close").onclick = close;
+
+    modal.querySelectorAll(".velo-modal-btn").forEach(btn => {
+      btn.onclick = () => {
+        const action = btn.dataset.action;
+
+        if (action === "location") {
+          if (!navigator.geolocation) {
+            alert("Геолокация недоступна на этом устройстве.");
+            return;
+          }
+
+          navigator.geolocation.getCurrentPosition(
+            pos => {
+              const lat = pos.coords.latitude;
+              const lon = pos.coords.longitude;
+              window.open(
+                `https://www.google.com/maps?q=${lat},${lon}`,
+                "_blank"
+              );
+            },
+            () => alert("Не удалось получить геопозицию.")
+          );
+        }
+
+        if (action === "safe") {
+          btn.textContent = "✓ Я в безопасности";
+          btn.disabled = true;
+        }
+
+        if (action === "services") {
+          window.open(
+            "https://www.google.com/maps/search/велосервис",
+            "_blank"
+          );
+        }
+
+        if (action === "shops") {
+          window.open(
+            "https://www.google.com/maps/search/веломагазин",
+            "_blank"
+          );
+        }
+
+        if (action === "rest") {
+          window.open(
+            "https://www.google.com/maps/search/парк",
+            "_blank"
+          );
+        }
+      };
+    });
+  }
+
+  sosCard?.addEventListener("click", () => {
+    openVeloAction(
+      "SOS Помощь",
+      "Выбери, что случилось. VELO поможет быстро найти решение.",
+      [
+        { icon: "📍", text: "Отправить мою геопозицию", action: "location" },
+        { icon: "🔧", text: "Нужен ремонт", action: "services" },
+        { icon: "✓", text: "Я в безопасности", action: "safe" }
+      ]
+    );
+  });
+
+  nearbyCard?.addEventListener("click", () => {
+    openVeloAction(
+      "Рядом",
+      "Найди всё необходимое для продолжения поездки.",
+      [
+        { icon: "🔧", text: "Велосервисы", action: "services" },
+        { icon: "🚲", text: "Веломагазины", action: "shops" },
+        { icon: "🌳", text: "Места отдыха", action: "rest" },
+        { icon: "📍", text: "Моя геопозиция", action: "location" }
+      ]
+    );
+  });
+})();
+</script>
+
+<script src="app.js"></script>
+
+</body>
+</html>

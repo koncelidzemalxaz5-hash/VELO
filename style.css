@@ -1,0 +1,5766 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0b0f14;
+  color: #ffffff;
+  min-height: 100vh;
+  padding-bottom: 90px;
+}
+
+.topbar {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.profile-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #27313c;
+  border-radius: 50%;
+  background: #121820;
+  color: white;
+  font-size: 18px;
+}
+
+main {
+  max-width: 600px;
+  margin: auto;
+  padding: 10px 18px 30px;
+}
+
+.hero {
+  padding: 42px 4px 30px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  opacity: .55;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  line-height: .98;
+  letter-spacing: -2px;
+}
+
+.hero h1 span {
+  opacity: .45;
+}
+
+.hero-text {
+  margin-top: 20px;
+  color: #aeb7c2;
+  line-height: 1.5;
+  font-size: 15px;
+  max-width: 420px;
+}
+
+.primary-btn {
+  margin-top: 25px;
+  width: 100%;
+  height: 56px;
+  border: 0;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #0b0f14;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.stat-card {
+  background: #121820;
+  border: 1px solid #202a35;
+  border-radius: 16px;
+  padding: 17px 10px;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 25px;
+}
+
+.stat-card span {
+  display: block;
+  margin-top: 5px;
+  color: #8994a0;
+  font-size: 11px;
+}
+
+.menu {
+  margin-top: 35px;
+}
+
+.menu h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.menu-card {
+  text-align: left;
+  min-height: 125px;
+  padding: 17px;
+  border-radius: 18px;
+  border: 1px solid #202a35;
+  background: #121820;
+  color: white;
+}
+
+.menu-card span {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 14px;
+}
+
+.menu-card b {
+  display: block;
+  font-size: 15px;
+}
+
+.menu-card small {
+  display: block;
+  margin-top: 5px;
+  color: #8994a0;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  background: #0e1319;
+  border-top: 1px solid #202a35;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.bottom-nav button {
+  border: 0;
+  background: none;
+  color: #737e89;
+  font-size: 18px;
+}
+
+.bottom-nav button span {
+  display: block;
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+.bottom-nav .active {
+  color: white;
+}
+
+button {
+  cursor: pointer;
+}
+
+.page {
+  display: none;
+}
+
+.page.active-page {
+  display: block;
+}
+
+.section-title {
+  padding: 35px 4px 20px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.section-title p:not(.eyebrow) {
+  color: #aeb7c2;
+  line-height: 1.5;
+}
+
+.placeholder-card {
+  margin-top: 20px;
+  min-height: 190px;
+  border: 1px solid #202a35;
+  border-radius: 20px;
+  background: #121820;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.placeholder-card span {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.placeholder-card b {
+  font-size: 18px;
+}
+
+.placeholder-card small {
+  margin-top: 8px;
+  color: #8994a0;
+}
+
+
+.ride-create-btn {
+  margin-bottom: 15px;
+}
+
+.ride-form {
+  display: none;
+  background: #121820;
+  border: 1px solid #202a35;
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.ride-form.visible {
+  display: block;
+}
+
+.ride-form label {
+  display: block;
+  color: #aeb7c2;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.ride-form input,
+.ride-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+  padding: 13px;
+  border-radius: 12px;
+  border: 1px solid #27313c;
+  background: #0b0f14;
+  color: white;
+  font: inherit;
+}
+
+.ride-form textarea {
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.form-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.secondary-btn {
+  height: 56px;
+  border-radius: 16px;
+  border: 1px solid #27313c;
+  background: #1a222c;
+  color: white;
+  font-weight: 700;
+}
+
+.rides-list {
+  display: grid;
+  gap: 12px;
+}
+
+.ride-card {
+  background: #121820;
+  border: 1px solid #202a35;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.ride-card h3 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.ride-info {
+  display: grid;
+  gap: 7px;
+  color: #aeb7c2;
+  font-size: 13px;
+}
+
+.ride-description {
+  margin-top: 13px;
+  color: #8994a0;
+  line-height: 1.5;
+}
+
+.join-ride {
+  margin-top: 15px;
+  width: 100%;
+  height: 45px;
+  border-radius: 12px;
+  border: 0;
+  background: white;
+  color: #0b0f14;
+  font-weight: 800;
+}
+
+.empty-rides {
+  text-align: center;
+  color: #8994a0;
+  padding: 30px 10px;
+}
+
+
+.map-search {
+  margin-bottom: 12px;
+}
+
+.map-search input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 15px;
+  border: 1px solid #27313c;
+  background: #121820;
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.location-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #202a35;
+  border-radius: 16px;
+  background: #121820;
+}
+
+.location-icon {
+  font-size: 24px;
+}
+
+.location-card div:nth-child(2) {
+  flex: 1;
+}
+
+.location-card b {
+  display: block;
+  font-size: 13px;
+}
+
+.location-card small {
+  display: block;
+  margin-top: 4px;
+  color: #8994a0;
+  font-size: 11px;
+}
+
+.location-card button {
+  border: 1px solid #303b47;
+  border-radius: 10px;
+  background: #1a222c;
+  color: white;
+  padding: 9px 10px;
+  font-size: 11px;
+}
+
+.map-preview {
+  height: 230px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #202a35;
+  border-radius: 20px;
+  background: #111820;
+}
+
+.map-grid {
+  position: absolute;
+  inset: 0;
+  opacity: .35;
+  background-image:
+    linear-gradient(30deg, transparent 45%, #303b47 46%, transparent 48%),
+    linear-gradient(120deg, transparent 45%, #303b47 46%, transparent 48%);
+  background-size: 75px 75px;
+}
+
+.map-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.map-center span {
+  font-size: 38px;
+}
+
+.map-center b {
+  margin-top: 7px;
+}
+
+.map-center small {
+  margin-top: 5px;
+  color: #8994a0;
+  font-size: 11px;
+}
+
+.routes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 2px 12px;
+}
+
+.routes-header h3 {
+  font-size: 19px;
+}
+
+#routeCount {
+  color: #8994a0;
+  font-size: 11px;
+}
+
+.routes-list {
+  display: grid;
+  gap: 12px;
+}
+
+.route-card {
+  padding: 17px;
+  border: 1px solid #202a35;
+  border-radius: 18px;
+  background: #121820;
+}
+
+.route-card h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.route-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.route-tag {
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #1a222c;
+  color: #aeb7c2;
+  font-size: 10px;
+}
+
+.route-card p {
+  color: #8994a0;
+  line-height: 1.45;
+  font-size: 12px;
+  margin: 11px 0;
+}
+
+.route-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.route-actions button {
+  height: 42px;
+  border-radius: 11px;
+  border: 1px solid #303b47;
+  background: #1a222c;
+  color: white;
+  font-weight: 700;
+}
+
+.route-actions .route-primary {
+  background: white;
+  color: #0b0f14;
+  border-color: white;
+}
+
+
+.chat-user {
+  background: #121820;
+  border: 1px solid #202a35;
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.chat-user label {
+  color: #aeb7c2;
+  font-size: 12px;
+}
+
+.chat-user input {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 11px;
+  border: 1px solid #27313c;
+  background: #0b0f14;
+  color: white;
+  font: inherit;
+}
+
+.chat-window {
+  min-height: 330px;
+  max-height: 450px;
+  overflow-y: auto;
+  padding: 12px;
+  border: 1px solid #202a35;
+  border-radius: 18px;
+  background: #0e1319;
+}
+
+.chat-empty {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #8994a0;
+  font-size: 13px;
+}
+
+.chat-message {
+  margin-bottom: 12px;
+}
+
+.chat-message:last-child {
+  margin-bottom: 0;
+}
+
+.chat-message-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 4px;
+}
+
+.chat-message-name {
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.chat-message-time {
+  color: #66717d;
+  font-size: 10px;
+}
+
+.chat-message-text {
+  color: #d7dde3;
+  line-height: 1.45;
+  font-size: 13px;
+  word-break: break-word;
+}
+
+.chat-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-form input {
+  flex: 1;
+  height: 50px;
+  padding: 0 14px;
+  border-radius: 13px;
+  border: 1px solid #27313c;
+  background: #121820;
+  color: white;
+  font: inherit;
+}
+
+.chat-form button {
+  width: 52px;
+  height: 50px;
+  border: 0;
+  border-radius: 13px;
+  background: white;
+  color: #0b0f14;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.clear-chat {
+  width: 100%;
+  height: 42px;
+  margin-top: 10px;
+  border: 1px solid #27313c;
+  border-radius: 12px;
+  background: transparent;
+  color: #8994a0;
+  font-size: 11px;
+}
+
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid #202a35;
+  border-radius: 20px;
+  background: #121820;
+}
+
+.avatar {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #1a222c;
+  font-size: 28px;
+}
+
+.profile-main {
+  flex: 1;
+}
+
+.profile-main input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.profile-main small {
+  display: block;
+  margin-top: 5px;
+  color: #8994a0;
+}
+
+.profile-section {
+  margin-top: 25px;
+}
+
+.profile-section h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.profile-stat {
+  padding: 17px 10px;
+  text-align: center;
+  border: 1px solid #202a35;
+  border-radius: 16px;
+  background: #121820;
+}
+
+.profile-stat strong {
+  display: block;
+  font-size: 25px;
+}
+
+.profile-stat span {
+  display: block;
+  margin-top: 5px;
+  color: #8994a0;
+  font-size: 11px;
+}
+
+.bike-info-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid #202a35;
+  border-radius: 18px;
+  background: #121820;
+}
+
+.bike-info-card input {
+  width: 100%;
+  height: 45px;
+  padding: 0 12px;
+  border: 1px solid #27313c;
+  border-radius: 11px;
+  background: #0b0f14;
+  color: white;
+  font: inherit;
+}
+
+.save-profile-btn {
+  height: 45px;
+  border: 0;
+  border-radius: 11px;
+  background: white;
+  color: #0b0f14;
+  font-weight: 800;
+}
+
+.achievements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.achievement {
+  padding: 15px;
+  border: 1px solid #202a35;
+  border-radius: 16px;
+  background: #121820;
+}
+
+.achievement span {
+  display: block;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.achievement b {
+  display: block;
+  font-size: 13px;
+}
+
+.achievement small {
+  display: block;
+  margin-top: 5px;
+  color: #8994a0;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.achievement.locked {
+  opacity: .45;
+}
+
+.history-empty {
+  padding: 22px;
+  text-align: center;
+  border: 1px solid #202a35;
+  border-radius: 16px;
+  background: #121820;
+  color: #8994a0;
+  font-size: 12px;
+}
+
+
+.history-list {
+  display: grid;
+  gap: 10px;
+}
+
+.history-item {
+  padding: 16px;
+  border: 1px solid #202a35;
+  border-radius: 16px;
+  background: #121820;
+}
+
+.history-item-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.history-item b {
+  font-size: 15px;
+}
+
+.history-item-date {
+  color: #8994a0;
+  font-size: 11px;
+}
+
+.history-item-stats {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+  color: #aeb7c2;
+  font-size: 12px;
+}
+
+.history-empty {
+  padding: 22px;
+  text-align: center;
+  border: 1px solid #202a35;
+  border-radius: 16px;
+  background: #121820;
+  color: #8994a0;
+  font-size: 12px;
+}
+
+
+/* ===== COMPLETED RIDE HISTORY ===== */
+
+.history-item {
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.history-item:hover {
+  transform: translateY(-2px);
+}
+
+.history-item-top {
+  align-items: flex-start;
+}
+
+.history-item-top > div:first-child {
+  min-width: 0;
+}
+
+.history-item-route {
+  margin-top: 6px;
+  color: #8994a0;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.history-status {
+  flex-shrink: 0;
+  padding: 5px 8px;
+  border: 1px solid #263341;
+  border-radius: 999px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.history-item-date {
+  margin-top: 8px;
+}
+
+.history-item-description {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #202a35;
+  color: #aeb7c2;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.history-item-stats {
+  flex-wrap: wrap;
+}
+
+
+/* ===== ACHIEVEMENT PROGRESS ===== */
+.achievement-progress {
+  width: 100%;
+  height: 6px;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: #202a35;
+  overflow: hidden;
+}
+
+.achievement-progress-bar {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .4s ease;
+}
+
+.achievement-progress-text {
+  margin-top: 5px;
+  font-size: 10px;
+  color: #8994a0;
+}
+
+
+/* ===== ACTIVE RIDE PANEL ===== */
+
+.active-ride-panel {
+  margin: 20px 0;
+  padding: 22px;
+  border-radius: 24px;
+  background: #111923;
+  border: 1px solid #263442;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
+}
+
+.active-ride-header h2 {
+  margin: 6px 0 0;
+}
+
+.active-ride-time {
+  margin: 24px 0;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.active-ride-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.active-ride-stats > div {
+  padding: 16px;
+  text-align: center;
+  border-radius: 18px;
+  background: #18232e;
+}
+
+.active-ride-stats strong {
+  display: block;
+  font-size: 26px;
+}
+
+.active-ride-stats span {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  opacity: .7;
+}
+
+.active-ride-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.active-ride-actions button {
+  min-height: 48px;
+}
+
+
+/* ===== FINISH RIDE MODAL ===== */
+
+.finish-ride-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.finish-ride-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .72);
+  backdrop-filter: blur(6px);
+}
+
+.finish-ride-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 420px);
+  padding: 26px;
+  border-radius: 28px;
+  background: #111923;
+  border: 1px solid #263442;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .45);
+  animation: finishRideModalIn .22s ease;
+}
+
+.finish-ride-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  border-radius: 20px;
+  background: #18232e;
+  font-size: 32px;
+}
+
+.finish-ride-card h2 {
+  margin: 0;
+  text-align: center;
+}
+
+.finish-ride-card > p {
+  margin: 8px 0 22px;
+  text-align: center;
+  font-size: 14px;
+  opacity: .7;
+}
+
+.finish-ride-card label {
+  display: block;
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.finish-ride-card input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 7px;
+  padding: 13px 14px;
+  border-radius: 14px;
+  border: 1px solid #263442;
+  background: #18232e;
+  color: inherit;
+  font: inherit;
+  outline: none;
+}
+
+.finish-ride-card input:focus {
+  border-color: #6f8192;
+}
+
+.finish-ride-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.finish-ride-summary > div {
+  padding: 14px;
+  text-align: center;
+  border-radius: 16px;
+  background: #18232e;
+}
+
+.finish-ride-summary strong {
+  display: block;
+  font-size: 22px;
+}
+
+.finish-ride-summary span {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  opacity: .65;
+}
+
+.finish-ride-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.finish-ride-actions button {
+  min-height: 48px;
+}
+
+@keyframes finishRideModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* ===== ACTIVE RIDE SPEED DISPLAY ===== */
+
+.active-ride-speed-card {
+  margin: 16px 0;
+  padding: 20px;
+  border-radius: 22px;
+  background: #18232e;
+  border: 1px solid #263442;
+  text-align: center;
+}
+
+.active-ride-speed-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  opacity: .7;
+}
+
+.active-ride-speed-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.active-ride-speed-value strong {
+  font-size: 52px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.active-ride-speed-value span {
+  font-size: 16px;
+  font-weight: 700;
+  opacity: .7;
+}
+
+.active-ride-max-speed {
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: .7;
+}
+
+.active-ride-max-speed strong {
+  font-size: 15px;
+  opacity: 1;
+}
+
+
+/* ===== RIDE DASHBOARD ===== */
+
+.active-ride-dashboard {
+  margin: 16px 0;
+  padding: 18px;
+  border-radius: 26px;
+  background: linear-gradient(145deg, #111a23, #1b2834);
+  border: 1px solid #2b3a48;
+  box-shadow: 0 12px 30px rgba(0,0,0,.22);
+}
+
+.ride-dashboard-main {
+  text-align: center;
+  padding: 8px 0 18px;
+}
+
+.ride-dashboard-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.8px;
+  opacity: .65;
+}
+
+.ride-dashboard-speed-value {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ride-dashboard-speed-value strong {
+  font-size: 64px;
+  line-height: .95;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.ride-dashboard-speed-value span {
+  font-size: 17px;
+  font-weight: 800;
+  opacity: .65;
+}
+
+.ride-dashboard-max {
+  margin-top: 9px;
+  font-size: 13px;
+  opacity: .65;
+}
+
+.ride-dashboard-max strong {
+  font-size: 16px;
+  opacity: 1;
+}
+
+.ride-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ride-dashboard-item {
+  padding: 15px 10px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.06);
+  text-align: center;
+}
+
+.ride-dashboard-icon {
+  display: block;
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.ride-dashboard-title {
+  display: block;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  opacity: .55;
+  margin-bottom: 4px;
+}
+
+.ride-dashboard-item strong {
+  font-size: 21px;
+  font-weight: 900;
+}
+
+@media (max-width: 380px) {
+  .ride-dashboard-speed-value strong {
+    font-size: 54px;
+  }
+
+  .active-ride-dashboard {
+    padding: 15px;
+  }
+}
+
+
+/* ===== GPS STATUS ===== */
+
+.ride-dashboard-gps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 14px;
+  padding: 11px 14px;
+  border-radius: 15px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(255,255,255,.06);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ride-dashboard-gps-accuracy {
+  font-size: 11px;
+  opacity: .65;
+  white-space: nowrap;
+}
+
+.ride-dashboard-gps-accuracy strong {
+  font-size: 12px;
+  opacity: 1;
+}
+
+@media (max-width: 380px) {
+  .ride-dashboard-gps {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* ===== RIDE SUMMARY — PREMIUM DESIGN ===== */
+
+.finish-ride-card {
+  width: min(100%, 430px);
+  padding: 24px;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #101820, #182631);
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.55),
+    0 8px 30px rgba(0,0,0,.25);
+}
+
+.finish-ride-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 12px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #263744, #1a2732);
+  border: 1px solid rgba(255,255,255,.08);
+  font-size: 36px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.finish-ride-card h2 {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -.5px;
+}
+
+.finish-ride-card > p {
+  margin: 7px 0 20px;
+  font-size: 13px;
+  opacity: .6;
+}
+
+/* Автоматические GPS-поля */
+.finish-ride-card label {
+  display: none;
+}
+
+/* ===== FINISH ELEVATION PREMIUM DISPLAY ===== */
+.finish-ride-elevation-display {
+  margin-top: 12px;
+  padding: 14px 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.07);
+  text-align: center;
+}
+
+.finish-ride-elevation-display strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.finish-ride-elevation-display span {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: .5;
+}
+
+/* Большая статистика */
+.finish-ride-summary {
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.finish-ride-summary > div {
+  padding: 20px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.07);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.finish-ride-summary strong {
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: -.5px;
+}
+
+.finish-ride-summary span {
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: .5;
+}
+
+/* Дополнительная строка с данными поездки */
+.finish-ride-actions {
+  grid-template-columns: 1fr 1.35fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.finish-ride-actions button {
+  min-height: 52px;
+  border-radius: 17px;
+  font-weight: 900;
+}
+
+@media (max-width: 380px) {
+  .finish-ride-card {
+    padding: 20px;
+    border-radius: 26px;
+  }
+
+  .finish-ride-summary > div {
+    padding: 17px 8px;
+  }
+
+  .finish-ride-summary strong {
+    font-size: 23px;
+  }
+}
+
+
+/* ===== HISTORY SPEED STATS — PREMIUM ===== */
+
+.history-item-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.history-item-stats span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 8px 6px;
+  box-sizing: border-box;
+  border-radius: 13px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.07);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.history-item-stats span:nth-child(3) {
+  background: rgba(255,255,255,.06);
+}
+
+.history-item-stats span:nth-child(4) {
+  background: rgba(255,255,255,.06);
+}
+
+@media (max-width: 380px) {
+  .history-item-stats {
+    gap: 6px;
+  }
+
+  .history-item-stats span {
+    font-size: 11px;
+    padding: 7px 4px;
+  }
+}
+
+
+/* =========================================================
+   PREMIUM BIKE COMPUTER — ACTIVE RIDE
+   ========================================================= */
+
+#activeRidePanel {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  margin-top: 18px;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(80, 180, 255, .16), transparent 42%),
+    linear-gradient(145deg, #0d151d, #111f2a 55%, #0b131a);
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+#activeRidePanel::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(80,180,255,.08);
+  filter: blur(35px);
+  pointer-events: none;
+}
+
+#activeRidePanel > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Главная скорость */
+
+.active-ride-speed-card {
+  margin: 0 0 18px;
+  padding: 24px 16px 22px;
+  border-radius: 26px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.08);
+  text-align: center;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+.active-ride-speed-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: .55;
+}
+
+.active-ride-speed-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.active-ride-speed-value strong {
+  font-size: clamp(58px, 18vw, 82px);
+  line-height: .95;
+  font-weight: 950;
+  letter-spacing: -4px;
+}
+
+.active-ride-speed-value span {
+  font-size: 17px;
+  font-weight: 800;
+  opacity: .6;
+}
+
+.active-ride-max-speed {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  opacity: .6;
+}
+
+/* Карточки статистики */
+
+#activeRidePanel .active-ride-stats,
+#activeRidePanel .ride-stats,
+#activeRidePanel .active-ride-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+#activeRidePanel .active-ride-stat,
+#activeRidePanel .ride-stat,
+#activeRidePanel .active-ride-summary > div {
+  min-width: 0;
+  padding: 16px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.07);
+  text-align: center;
+}
+
+#activeRidePanel .active-ride-stat strong,
+#activeRidePanel .ride-stat strong,
+#activeRidePanel .active-ride-summary strong {
+  display: block;
+  font-size: 23px;
+  font-weight: 900;
+}
+
+#activeRidePanel .active-ride-stat span,
+#activeRidePanel .ride-stat span,
+#activeRidePanel .active-ride-summary span {
+  display: block;
+  margin-top: 5px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: .5;
+}
+
+/* Время */
+
+#activeRideTime {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+}
+
+/* Кнопки */
+
+#activeRidePanel button {
+  min-height: 52px;
+  border-radius: 17px;
+  font-weight: 900;
+}
+
+@media (max-width: 380px) {
+  #activeRidePanel {
+    padding: 16px;
+    border-radius: 25px;
+  }
+
+  .active-ride-speed-card {
+    padding: 20px 10px;
+  }
+
+  .active-ride-speed-value strong {
+    font-size: 58px;
+  }
+
+  #activeRidePanel .active-ride-stat,
+  #activeRidePanel .ride-stat,
+  #activeRidePanel .active-ride-summary > div {
+    padding: 13px 8px;
+  }
+}
+
+
+/* =========================================================
+   PREMIUM BIKE COMPUTER — CONTROLS
+   ========================================================= */
+
+#activeRidePanel #pauseRide,
+#activeRidePanel #finishActiveRide {
+  min-height: 56px;
+  border-radius: 18px;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: .2px;
+  transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+}
+
+#activeRidePanel #pauseRide {
+  background: linear-gradient(145deg, #263744, #1a2732);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+#activeRidePanel #finishActiveRide {
+  background: linear-gradient(145deg, #e9f2f7, #bfcbd3);
+  color: #0b131a;
+  border: 0;
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.65);
+}
+
+#activeRidePanel #pauseRide:active,
+#activeRidePanel #finishActiveRide:active {
+  transform: scale(.97);
+}
+
+#activeRidePanel #pauseRide:hover,
+#activeRidePanel #finishActiveRide:hover {
+  filter: brightness(1.08);
+}
+
+/* Верхняя строка велокомпьютера */
+
+#activeRidePanel .active-ride-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+#activeRidePanel .active-ride-header span {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  opacity: .55;
+}
+
+/* Индикатор активной поездки */
+
+#activeRidePanel .ride-live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#activeRidePanel .ride-live-indicator::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 12px currentColor;
+}
+
+/* Улучшенная сетка показателей */
+
+#activeRidePanel .active-ride-stats,
+#activeRidePanel .ride-stats,
+#activeRidePanel .active-ride-summary {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#activeRidePanel .active-ride-stat,
+#activeRidePanel .ride-stat,
+#activeRidePanel .active-ride-summary > div {
+  position: relative;
+  overflow: hidden;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#activeRidePanel .active-ride-stat::after,
+#activeRidePanel .ride-stat::after,
+#activeRidePanel .active-ride-summary > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.045),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+/* Большие цифры */
+
+#activeRidePanel .active-ride-stat strong,
+#activeRidePanel .ride-stat strong,
+#activeRidePanel .active-ride-summary strong {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.5px;
+}
+
+/* Анимация пульса для живого велокомпьютера */
+
+@keyframes bikeComputerPulse {
+  0%, 100% {
+    opacity: .75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+#activeRidePanel .active-ride-speed-label {
+  animation: bikeComputerPulse 2.5s ease-in-out infinite;
+}
+
+/* Маленькие экраны */
+
+@media (max-width: 380px) {
+  #activeRidePanel #pauseRide,
+  #activeRidePanel #finishActiveRide {
+    min-height: 52px;
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   🚴 VELO — SIGNATURE PREMIUM BIKE COMPUTER
+   Финальный визуальный слой
+   ========================================================= */
+
+#activeRidePanel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 32px;
+
+  background:
+    radial-gradient(circle at 50% -5%, rgba(91, 214, 255, .22), transparent 34%),
+    radial-gradient(circle at 100% 100%, rgba(117, 91, 255, .13), transparent 38%),
+    linear-gradient(145deg, #071018 0%, #0d1a25 48%, #081018 100%);
+
+  border: 1px solid rgba(166, 225, 255, .14);
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.55),
+    0 10px 35px rgba(0,0,0,.32),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+/* Светящийся ореол */
+
+#activeRidePanel::before {
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  top: -210px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+
+  background: rgba(65, 205, 255, .14);
+  filter: blur(55px);
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+#activeRidePanel::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -130px;
+  bottom: -120px;
+  border-radius: 50%;
+
+  background: rgba(111, 87, 255, .10);
+  filter: blur(45px);
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+#activeRidePanel > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   LIVE HEADER
+   ========================================================= */
+
+#activeRidePanel .active-ride-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+#activeRidePanel .active-ride-header span {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: .48;
+}
+
+#activeRidePanel .ride-live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px 11px;
+  border-radius: 999px;
+
+  background: rgba(91,214,255,.07);
+  border: 1px solid rgba(91,214,255,.16);
+
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+
+  color: #79ddff;
+
+  box-shadow:
+    0 0 20px rgba(91,214,255,.08),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+#activeRidePanel .ride-live-indicator::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+
+  background: #67dcff;
+
+  box-shadow:
+    0 0 7px #67dcff,
+    0 0 16px rgba(103,220,255,.8);
+
+  animation: veloLivePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes veloLivePulse {
+  0%,100% {
+    transform: scale(.8);
+    opacity: .65;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   MAIN SPEED
+   ========================================================= */
+
+.active-ride-speed-card {
+  position: relative;
+  overflow: hidden;
+
+  margin: 0 0 12px;
+  padding: 28px 12px 25px;
+
+  border-radius: 28px;
+
+  background:
+    radial-gradient(circle at 50% 30%, rgba(95,215,255,.10), transparent 55%),
+    rgba(255,255,255,.035);
+
+  border: 1px solid rgba(255,255,255,.075);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.055),
+    0 12px 35px rgba(0,0,0,.18);
+
+  text-align: center;
+}
+
+.active-ride-speed-card::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+
+  border-radius: 50%;
+  border: 1px solid rgba(96,215,255,.07);
+
+  box-shadow:
+    0 0 45px rgba(96,215,255,.05);
+
+  pointer-events: none;
+}
+
+.active-ride-speed-label {
+  position: relative;
+  display: block;
+
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,.48);
+
+  animation: veloLabelGlow 3s ease-in-out infinite;
+}
+
+@keyframes veloLabelGlow {
+  0%,100% { opacity: .48; }
+  50% { opacity: .82; }
+}
+
+.active-ride-speed-value {
+  position: relative;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+
+  gap: 8px;
+  margin-top: 7px;
+}
+
+.active-ride-speed-value strong {
+  font-size: clamp(64px, 19vw, 92px);
+  line-height: .9;
+
+  font-weight: 950;
+  letter-spacing: -5px;
+
+  background: linear-gradient(
+    180deg,
+    #f4fcff 0%,
+    #9eeaff 48%,
+    #58cfff 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 0 28px rgba(86,211,255,.16);
+
+  font-variant-numeric: tabular-nums;
+}
+
+.active-ride-speed-value span {
+  font-size: 16px;
+  font-weight: 900;
+  color: rgba(220,246,255,.58);
+}
+
+.active-ride-max-speed {
+  position: relative;
+
+  margin-top: 13px;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  color: rgba(255,255,255,.48);
+
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   STAT CARDS
+   ========================================================= */
+
+#activeRidePanel .active-ride-stats,
+#activeRidePanel .ride-stats,
+#activeRidePanel .active-ride-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#activeRidePanel .active-ride-stat,
+#activeRidePanel .ride-stat,
+#activeRidePanel .active-ride-summary > div {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 76px;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 14px 10px;
+
+  border-radius: 21px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.025)
+    );
+
+  border: 1px solid rgba(255,255,255,.065);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.045),
+    0 8px 22px rgba(0,0,0,.12);
+
+  text-align: center;
+}
+
+#activeRidePanel .active-ride-stat::after,
+#activeRidePanel .ride-stat::after,
+#activeRidePanel .active-ride-summary > div::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.055),
+      transparent 52%
+    );
+
+  pointer-events: none;
+}
+
+#activeRidePanel .active-ride-stat strong,
+#activeRidePanel .ride-stat strong,
+#activeRidePanel .active-ride-summary strong {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+
+  font-size: 24px;
+  line-height: 1;
+
+  font-weight: 950;
+  letter-spacing: -.7px;
+
+  font-variant-numeric: tabular-nums;
+}
+
+#activeRidePanel .active-ride-stat span,
+#activeRidePanel .ride-stat span,
+#activeRidePanel .active-ride-summary span {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+
+  margin-top: 7px;
+
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,.42);
+}
+
+/* =========================================================
+   TIME
+   ========================================================= */
+
+#activeRideTime {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1.2px;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+#activeRidePanel #pauseRide,
+#activeRidePanel #finishActiveRide {
+  min-height: 56px;
+
+  border-radius: 18px;
+
+  font-size: 14px;
+  font-weight: 950;
+
+  letter-spacing: .2px;
+
+  transition:
+    transform .16s ease,
+    filter .16s ease,
+    box-shadow .16s ease;
+}
+
+#activeRidePanel #pauseRide {
+  background:
+    linear-gradient(
+      145deg,
+      #243542,
+      #15242f
+    );
+
+  color: #e5f5fb;
+
+  border: 1px solid rgba(255,255,255,.09);
+
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+#activeRidePanel #finishActiveRide {
+  background:
+    linear-gradient(
+      145deg,
+      #e9fbff,
+      #9dddf0
+    );
+
+  color: #07131a;
+
+  border: 0;
+
+  box-shadow:
+    0 14px 32px rgba(62,190,230,.16),
+    inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+#activeRidePanel #pauseRide:active,
+#activeRidePanel #finishActiveRide:active {
+  transform: scale(.965);
+}
+
+#activeRidePanel #pauseRide:hover,
+#activeRidePanel #finishActiveRide:hover {
+  filter: brightness(1.08);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  #activeRidePanel {
+    padding: 14px;
+    border-radius: 27px;
+  }
+
+  .active-ride-speed-card {
+    padding: 23px 8px 21px;
+    border-radius: 24px;
+  }
+
+  .active-ride-speed-value strong {
+    font-size: 62px;
+    letter-spacing: -4px;
+  }
+
+  #activeRidePanel .active-ride-stat,
+  #activeRidePanel .ride-stat,
+  #activeRidePanel .active-ride-summary > div {
+    min-height: 68px;
+    padding: 12px 7px;
+  }
+
+  #activeRidePanel #pauseRide,
+  #activeRidePanel #finishActiveRide {
+    min-height: 52px;
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   🚴 VELO VIP COMPUTER — COMPLETE VISUAL REDESIGN
+   ========================================================= */
+
+#activeRidePanel {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+
+  margin: 22px 0 !important;
+  padding: 14px !important;
+
+  border-radius: 34px !important;
+
+  background:
+    radial-gradient(circle at 50% 0%,
+      rgba(0, 220, 255, .20),
+      transparent 32%),
+    radial-gradient(circle at 100% 80%,
+      rgba(120, 80, 255, .18),
+      transparent 35%),
+    linear-gradient(145deg,
+      #05090e 0%,
+      #0b141d 45%,
+      #070b11 100%) !important;
+
+  border: 1px solid rgba(180,230,255,.16) !important;
+
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.65),
+    0 0 70px rgba(0,190,255,.07),
+    inset 0 1px 0 rgba(255,255,255,.09) !important;
+}
+
+/* верхняя линия */
+
+#activeRidePanel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(110,225,255,.75),
+    transparent
+  );
+
+  box-shadow: 0 0 18px rgba(80,210,255,.6);
+}
+
+#activeRidePanel::after {
+  content: "";
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  left: 50%;
+  top: 90px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: rgba(0,200,255,.06);
+  filter: blur(50px);
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* =========================================================
+   VIP HEADER
+   ========================================================= */
+
+#activeRidePanel .active-ride-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  padding: 5px 5px 13px !important;
+  margin: 0 !important;
+}
+
+#activeRidePanel .active-ride-header span {
+  font-size: 9px !important;
+  font-weight: 900 !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+
+  color: rgba(255,255,255,.45) !important;
+}
+
+#activeRidePanel .ride-live-indicator {
+  padding: 7px 12px !important;
+
+  border-radius: 999px !important;
+
+  background: rgba(0,220,255,.08) !important;
+  border: 1px solid rgba(70,220,255,.22) !important;
+
+  color: #79e5ff !important;
+
+  font-size: 9px !important;
+  font-weight: 900 !important;
+  letter-spacing: 1.5px !important;
+
+  box-shadow:
+    0 0 25px rgba(0,210,255,.10),
+    inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+
+/* =========================================================
+   ГЛАВНЫЙ VIP SPEEDOMETER
+   ========================================================= */
+
+.active-ride-speed-card {
+  position: relative !important;
+  overflow: hidden !important;
+
+  margin: 0 !important;
+  padding: 28px 10px 26px !important;
+
+  min-height: 235px;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border-radius: 30px !important;
+
+  background:
+    radial-gradient(
+      circle at 50% 52%,
+      rgba(70,210,255,.12),
+      transparent 48%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.018)
+    ) !important;
+
+  border: 1px solid rgba(170,230,255,.12) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -25px 50px rgba(0,0,0,.18),
+    0 20px 50px rgba(0,0,0,.25) !important;
+}
+
+/* кольцо */
+
+.active-ride-speed-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 184px;
+  height: 184px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%,-50%);
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(82,220,255,.18);
+
+  box-shadow:
+    0 0 25px rgba(70,210,255,.08),
+    inset 0 0 25px rgba(70,210,255,.04);
+
+  pointer-events: none;
+}
+
+/* второе кольцо */
+
+.active-ride-speed-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%,-50%);
+
+  border-radius: 50%;
+
+  border: 1px dashed rgba(120,220,255,.12);
+
+  animation: vipRingSpin 18s linear infinite;
+
+  pointer-events: none;
+}
+
+@keyframes vipRingSpin {
+  from {
+    transform: translate(-50%,-50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%,-50%) rotate(360deg);
+  }
+}
+
+.active-ride-speed-label {
+  position: relative !important;
+  z-index: 3 !important;
+
+  margin-bottom: 5px !important;
+
+  font-size: 9px !important;
+  font-weight: 900 !important;
+
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+
+  color: rgba(190,240,255,.52) !important;
+}
+
+.active-ride-speed-value {
+  position: relative !important;
+  z-index: 3 !important;
+
+  display: flex !important;
+
+  align-items: baseline !important;
+  justify-content: center !important;
+
+  gap: 7px !important;
+
+  margin: 0 !important;
+}
+
+.active-ride-speed-value strong {
+  font-size: clamp(72px, 22vw, 108px) !important;
+
+  line-height: .82 !important;
+
+  font-weight: 950 !important;
+
+  letter-spacing: -6px !important;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #b9f3ff 42%,
+    #51d5ff 100%
+  ) !important;
+
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+
+  color: transparent !important;
+
+  filter:
+    drop-shadow(0 0 14px rgba(70,215,255,.25))
+    drop-shadow(0 0 35px rgba(70,215,255,.12)) !important;
+
+  font-variant-numeric: tabular-nums !important;
+}
+
+.active-ride-speed-value span {
+  font-size: 15px !important;
+  font-weight: 900 !important;
+
+  color: rgba(210,245,255,.55) !important;
+}
+
+.active-ride-max-speed {
+  position: relative !important;
+  z-index: 3 !important;
+
+  margin-top: 17px !important;
+
+  padding: 6px 12px !important;
+
+  border-radius: 999px !important;
+
+  background: rgba(255,255,255,.045) !important;
+  border: 1px solid rgba(255,255,255,.06) !important;
+
+  font-size: 10px !important;
+  font-weight: 800 !important;
+
+  color: rgba(255,255,255,.48) !important;
+
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* =========================================================
+   STATISTICS — VIP GLASS CARDS
+   ========================================================= */
+
+#activeRidePanel .active-ride-stats,
+#activeRidePanel .ride-stats,
+#activeRidePanel .active-ride-summary {
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(2, minmax(0,1fr)) !important;
+
+  gap: 9px !important;
+
+  margin-top: 9px !important;
+}
+
+#activeRidePanel .active-ride-stat,
+#activeRidePanel .ride-stat,
+#activeRidePanel .active-ride-summary > div {
+
+  position: relative !important;
+  overflow: hidden !important;
+
+  min-height: 78px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 12px 8px !important;
+
+  border-radius: 22px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.065),
+      rgba(255,255,255,.018)
+    ) !important;
+
+  border: 1px solid rgba(255,255,255,.075) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 10px 25px rgba(0,0,0,.18) !important;
+
+  text-align: center !important;
+}
+
+#activeRidePanel .active-ride-stat::before,
+#activeRidePanel .ride-stat::before,
+#activeRidePanel .active-ride-summary > div::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 70px;
+  height: 70px;
+
+  top: -35px;
+  right: -35px;
+
+  border-radius: 50%;
+
+  background: rgba(60,210,255,.07);
+
+  filter: blur(8px);
+}
+
+#activeRidePanel .active-ride-stat strong,
+#activeRidePanel .ride-stat strong,
+#activeRidePanel .active-ride-summary strong {
+
+  position: relative;
+  z-index: 2;
+
+  font-size: 25px !important;
+  line-height: 1 !important;
+
+  font-weight: 950 !important;
+
+  letter-spacing: -.8px !important;
+
+  font-variant-numeric: tabular-nums !important;
+}
+
+#activeRidePanel .active-ride-stat span,
+#activeRidePanel .ride-stat span,
+#activeRidePanel .active-ride-summary span {
+
+  position: relative;
+  z-index: 2;
+
+  margin-top: 7px !important;
+
+  font-size: 8px !important;
+
+  font-weight: 900 !important;
+
+  letter-spacing: 1.5px !important;
+
+  text-transform: uppercase !important;
+
+  color: rgba(255,255,255,.42) !important;
+}
+
+/* =========================================================
+   TIME
+   ========================================================= */
+
+#activeRideTime {
+  font-variant-numeric: tabular-nums !important;
+  letter-spacing: 1.5px !important;
+}
+
+/* =========================================================
+   VIP BUTTONS
+   ========================================================= */
+
+#activeRidePanel #pauseRide,
+#activeRidePanel #finishActiveRide {
+
+  min-height: 58px !important;
+
+  border-radius: 20px !important;
+
+  font-size: 14px !important;
+  font-weight: 950 !important;
+
+  letter-spacing: .2px !important;
+
+  transition:
+    transform .15s ease,
+    filter .15s ease,
+    box-shadow .15s ease !important;
+}
+
+#activeRidePanel #pauseRide {
+
+  background:
+    linear-gradient(
+      145deg,
+      #243a48,
+      #12212b
+    ) !important;
+
+  color: #e9f9ff !important;
+
+  border: 1px solid rgba(130,220,255,.13) !important;
+
+  box-shadow:
+    0 14px 30px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+
+#activeRidePanel #finishActiveRide {
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #c9f5ff 48%,
+      #7ddcff 100%
+    ) !important;
+
+  color: #061018 !important;
+
+  border: 0 !important;
+
+  box-shadow:
+    0 16px 35px rgba(50,200,240,.20),
+    0 4px 12px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.95) !important;
+}
+
+#activeRidePanel #pauseRide:active,
+#activeRidePanel #finishActiveRide:active {
+  transform: scale(.96) !important;
+}
+
+#activeRidePanel #pauseRide:hover,
+#activeRidePanel #finishActiveRide:hover {
+  filter: brightness(1.08) !important;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  #activeRidePanel {
+    padding: 10px !important;
+    border-radius: 29px !important;
+  }
+
+  .active-ride-speed-card {
+    min-height: 215px;
+    padding: 22px 6px !important;
+    border-radius: 27px !important;
+  }
+
+  .active-ride-speed-value strong {
+    font-size: 70px !important;
+    letter-spacing: -5px !important;
+  }
+
+  .active-ride-speed-card::before {
+    width: 160px;
+    height: 160px;
+  }
+
+  .active-ride-speed-card::after {
+    width: 130px;
+    height: 130px;
+  }
+
+  #activeRidePanel .active-ride-stat,
+  #activeRidePanel .ride-stat,
+  #activeRidePanel .active-ride-summary > div {
+    min-height: 70px !important;
+  }
+
+  #activeRidePanel #pauseRide,
+  #activeRidePanel #finishActiveRide {
+    min-height: 53px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* =========================================================
+   🚴 VELO VIP HISTORY 2.0 — PREMIUM RIDE CARDS
+   ========================================================= */
+
+.history-item {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 14px;
+  padding: 18px;
+  border-radius: 26px;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(91,214,255,.10),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #0c1720 0%,
+      #101f2b 52%,
+      #0a141c 100%
+    );
+
+  border: 1px solid rgba(166,225,255,.10);
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.30),
+    inset 0 1px 0 rgba(255,255,255,.055);
+
+  transform: translateZ(0);
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+}
+
+.history-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(103,220,255,.20);
+
+  box-shadow:
+    0 22px 55px rgba(0,0,0,.38),
+    0 0 30px rgba(80,190,255,.05),
+    inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+.history-item::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  top: -110px;
+  right: -80px;
+
+  border-radius: 50%;
+  background: rgba(77,205,255,.08);
+  filter: blur(35px);
+
+  pointer-events: none;
+}
+
+.history-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Верх карточки */
+
+.history-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.history-item-title {
+  font-size: 16px;
+  font-weight: 950;
+  letter-spacing: -.2px;
+}
+
+.history-item-date {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  opacity: .42;
+}
+
+/* Главный показатель */
+
+.history-item-distance {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+
+.history-item-distance strong {
+  font-size: 38px;
+  line-height: .95;
+  font-weight: 950;
+  letter-spacing: -2px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f5fdff,
+      #8fe7ff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.history-item-distance span {
+  font-size: 12px;
+  font-weight: 900;
+  opacity: .48;
+}
+
+/* Статистика */
+
+.history-item-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.history-item-stats span {
+  min-height: 42px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 6px;
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.025)
+    );
+
+  border: 1px solid rgba(255,255,255,.065);
+
+  font-size: 11px;
+  font-weight: 850;
+  text-align: center;
+  white-space: nowrap;
+
+  font-variant-numeric: tabular-nums;
+}
+
+/* Первый показатель — чуть ярче */
+
+.history-item-stats span:first-child {
+  border-color: rgba(103,220,255,.12);
+}
+
+/* Кнопки карточки */
+
+.history-item-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.history-item-actions button {
+  min-height: 44px;
+  border-radius: 15px;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  transition:
+    transform .15s ease,
+    filter .15s ease;
+}
+
+.history-item-actions button:active {
+  transform: scale(.96);
+}
+
+.history-item-actions button:hover {
+  filter: brightness(1.08);
+}
+
+/* Индикатор завершённой поездки */
+
+.history-item-completed {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-bottom: 10px;
+  padding: 6px 9px;
+
+  border-radius: 999px;
+
+  background: rgba(103,220,255,.055);
+  border: 1px solid rgba(103,220,255,.11);
+
+  color: rgba(146,231,255,.78);
+
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.history-item-completed::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: #67dcff;
+
+  box-shadow:
+    0 0 8px #67dcff;
+}
+
+/* Мобильная версия */
+
+@media (max-width: 380px) {
+
+  .history-item {
+    padding: 15px;
+    border-radius: 23px;
+  }
+
+  .history-item-distance strong {
+    font-size: 34px;
+  }
+
+  .history-item-stats {
+    gap: 6px;
+  }
+
+  .history-item-stats span {
+    min-height: 39px;
+    font-size: 10px;
+    padding: 7px 4px;
+  }
+
+  .history-item-actions button {
+    min-height: 42px;
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   🚴 VELO VIP HISTORY 3.0 — SIGNATURE CARDS
+   ========================================================= */
+
+#profileHistory {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#profileHistory .history-item {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 20px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(103,220,255,.14), transparent 32%),
+    radial-gradient(circle at 0% 100%, rgba(116,88,255,.10), transparent 35%),
+    linear-gradient(145deg, #08131b, #102330 52%, #071018);
+  border: 1px solid rgba(155,225,255,.14);
+  box-shadow:
+    0 22px 55px rgba(0,0,0,.38),
+    inset 0 1px 0 rgba(255,255,255,.07);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+#profileHistory .history-item:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 28px 65px rgba(0,0,0,.45),
+    0 0 35px rgba(75,200,255,.07);
+}
+
+#profileHistory .history-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* STATUS */
+
+#profileHistory .history-item-completed {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 13px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(103,220,255,.07);
+  border: 1px solid rgba(103,220,255,.14);
+  color: #8de6ff;
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+#profileHistory .history-item-completed::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #67dcff;
+  box-shadow: 0 0 7px #67dcff, 0 0 15px rgba(103,220,255,.7);
+}
+
+/* HEADER */
+
+#profileHistory .history-item-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+#profileHistory .history-item-title {
+  font-size: 17px;
+  font-weight: 950;
+  letter-spacing: -.3px;
+}
+
+#profileHistory .history-item-route {
+  margin-top: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,.43);
+}
+
+#profileHistory .history-item-date {
+  flex-shrink: 0;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.38);
+}
+
+/* DISTANCE */
+
+#profileHistory .history-item-distance {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 4px 0 16px;
+}
+
+#profileHistory .history-item-distance strong {
+  font-size: clamp(42px, 12vw, 54px);
+  line-height: .9;
+  font-weight: 950;
+  letter-spacing: -3px;
+  background: linear-gradient(180deg, #f8fdff, #9beaff 48%, #51cfff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+
+#profileHistory .history-item-distance span {
+  font-size: 13px;
+  font-weight: 900;
+  color: rgba(220,246,255,.48);
+}
+
+/* STATS */
+
+#profileHistory .history-item-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 9px;
+  margin: 0;
+}
+
+#profileHistory .history-item-stats span {
+  min-height: 54px;
+  padding: 10px 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 17px;
+  background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.022));
+  border: 1px solid rgba(255,255,255,.065);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.045),
+    0 8px 20px rgba(0,0,0,.12);
+  font-size: 11px;
+  font-weight: 900;
+  text-align: center;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+#profileHistory .history-item-stats span:first-child {
+  border-color: rgba(103,220,255,.16);
+}
+
+/* ROUTE */
+
+#profileHistory .history-item .history-route-preview {
+  margin-top: 14px;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.07);
+  background: rgba(255,255,255,.025);
+}
+
+/* MOBILE */
+
+@media (max-width: 380px) {
+  #profileHistory .history-item {
+    padding: 16px;
+    border-radius: 24px;
+  }
+
+  #profileHistory .history-item-title {
+    font-size: 15px;
+  }
+
+  #profileHistory .history-item-distance strong {
+    font-size: 40px;
+  }
+
+  #profileHistory .history-item-stats {
+    gap: 7px;
+  }
+
+  #profileHistory .history-item-stats span {
+    min-height: 49px;
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================================
+   🚴 VELO VIP DELETE CONTROLS
+   ========================================================= */
+
+#profileHistory .history-delete-ride,
+.delete-all-history-button {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 12px;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(255,255,255,.07);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.025)
+    );
+
+  color: rgba(255,255,255,.68);
+
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .4px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.045),
+    0 8px 20px rgba(0,0,0,.15);
+
+  transition:
+    transform .16s ease,
+    background .16s ease,
+    border-color .16s ease,
+    color .16s ease;
+}
+
+#profileHistory .history-delete-ride:hover,
+.delete-all-history-button:hover {
+  color: #ffb4b4;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,90,90,.12),
+      rgba(255,70,70,.045)
+    );
+
+  border-color: rgba(255,110,110,.22);
+}
+
+#profileHistory .history-delete-ride:active,
+.delete-all-history-button:active {
+  transform: scale(.97);
+}
+
+.delete-all-history-button {
+  margin-bottom: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,70,70,.10),
+      rgba(255,70,70,.035)
+    );
+
+  border-color: rgba(255,100,100,.15);
+
+  color: rgba(255,180,180,.78);
+}
+
+.delete-all-history-button:hover {
+  color: #ffd0d0;
+
+  border-color: rgba(255,110,110,.30);
+
+  box-shadow:
+    0 0 24px rgba(255,80,80,.08),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+@media (max-width: 380px) {
+  #profileHistory .history-delete-ride,
+  .delete-all-history-button {
+    min-height: 44px;
+    font-size: 10px;
+    border-radius: 15px;
+  }
+}
+
+
+/* =========================================================
+   🔥 VELO VIP — FIRE BURST RESULT EFFECT
+   ========================================================= */
+
+#profileHistory .history-item {
+  position: relative;
+}
+
+.ride-result-fire-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  z-index: 20;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.ride-result-fire-burst::before,
+.ride-result-fire-burst::after {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,190,70,.65);
+  box-shadow:
+    0 0 18px rgba(255,120,30,.55),
+    0 0 38px rgba(255,70,20,.28);
+  animation: vipFireRing .65s ease-out forwards;
+}
+
+.ride-result-fire-burst::after {
+  inset: -5px;
+  border-color: rgba(255,235,150,.85);
+  animation-delay: .04s;
+}
+
+.ride-result-fire-burst span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffd36a;
+  box-shadow:
+    0 0 7px rgba(255,180,50,.95),
+    0 0 15px rgba(255,70,20,.7);
+  transform: translate(-50%, -50%);
+  animation: vipFireParticle .72s cubic-bezier(.15,.8,.25,1) forwards;
+  animation-delay: var(--delay);
+}
+
+.ride-result-fire-burst span:nth-child(3n) {
+  width: 7px;
+  height: 7px;
+}
+
+.ride-result-fire-burst span:nth-child(4n) {
+  width: 3px;
+  height: 3px;
+}
+
+.ride-result-fire-burst span:nth-child(5n) {
+  border-radius: 2px;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+@keyframes vipFireParticle {
+  0% {
+    opacity: 1;
+    transform:
+      translate(-50%, -50%)
+      scale(1.4)
+      translate(0, 0);
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(-50%, -50%)
+      scale(.25)
+      translate(var(--x), var(--y));
+  }
+}
+
+@keyframes vipFireRing {
+  0% {
+    opacity: 1;
+    transform: scale(.35);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(3.8);
+  }
+}
+
+#profileHistory .history-item.ride-result-open {
+  animation: vipRideResultOpen .65s ease-out;
+}
+
+@keyframes vipRideResultOpen {
+  0% {
+    transform: scale(1);
+    box-shadow:
+      0 22px 55px rgba(0,0,0,.38);
+  }
+
+  35% {
+    transform: scale(1.018);
+    box-shadow:
+      0 25px 65px rgba(0,0,0,.45),
+      0 0 35px rgba(255,130,35,.18);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 380px) {
+  .ride-result-fire-burst span {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+
+/* =========================================================
+   🔥🚴 VELO VIP RIDE REVEAL — PREMIUM FIRE SCREEN
+   ========================================================= */
+
+.vip-ride-reveal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(255,105,35,.13),
+      transparent 35%
+    ),
+    rgba(2,7,11,.94);
+
+  backdrop-filter: blur(18px);
+
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.vip-ride-reveal.show {
+  opacity: 1;
+}
+
+.vip-reveal-panel {
+  position: relative;
+  width: min(100%, 430px);
+  max-height: 92vh;
+  overflow-y: auto;
+
+  padding: 24px;
+  box-sizing: border-box;
+
+  border-radius: 32px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255,145,55,.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #09151e,
+      #102733 55%,
+      #071017
+    );
+
+  border: 1px solid rgba(255,190,110,.18);
+
+  box-shadow:
+    0 35px 90px rgba(0,0,0,.65),
+    0 0 70px rgba(255,100,30,.10),
+    inset 0 1px 0 rgba(255,255,255,.08);
+
+  transform:
+    translateY(35px)
+    scale(.92);
+
+  transition:
+    transform .55s cubic-bezier(.16,1,.3,1);
+}
+
+.vip-ride-reveal.show .vip-reveal-panel {
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+/* CLOSE */
+
+.vip-reveal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.08);
+
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.7);
+
+  font-size: 24px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+/* BADGE */
+
+.vip-reveal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px 11px;
+  margin-bottom: 12px;
+
+  border-radius: 999px;
+
+  background: rgba(255,170,70,.07);
+  border: 1px solid rgba(255,180,80,.15);
+
+  color: #ffd08a;
+
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 1.5px;
+}
+
+.vip-reveal-badge span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #ffb347;
+
+  box-shadow:
+    0 0 8px #ff8a30,
+    0 0 16px rgba(255,80,20,.65);
+}
+
+/* TITLE */
+
+.vip-reveal-title {
+  font-size: 17px;
+  font-weight: 950;
+  letter-spacing: -.3px;
+}
+
+/* DISTANCE */
+
+.vip-reveal-distance {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+
+  margin: 22px 0 24px;
+}
+
+.vip-reveal-distance strong {
+  font-size: clamp(58px, 17vw, 78px);
+  line-height: .85;
+
+  font-weight: 950;
+  letter-spacing: -4px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff,
+      #ffe0a3 45%,
+      #ff8b35
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.vip-reveal-distance span {
+  font-size: 14px;
+  font-weight: 900;
+  color: rgba(255,220,175,.48);
+}
+
+/* STATS */
+
+.vip-reveal-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 9px;
+}
+
+.vip-reveal-stats > div {
+  min-height: 76px;
+
+  padding: 12px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.02)
+    );
+
+  border: 1px solid rgba(255,255,255,.065);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.045);
+}
+
+.vip-reveal-stats small {
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  color: rgba(255,255,255,.35);
+}
+
+.vip-reveal-stats strong {
+  margin-top: 4px;
+
+  font-size: 21px;
+  font-weight: 950;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.vip-reveal-stats span {
+  font-size: 9px;
+  color: rgba(255,255,255,.35);
+}
+
+/* ROUTE */
+
+.vip-reveal-route {
+  margin-top: 15px;
+  overflow: hidden;
+
+  border-radius: 21px;
+
+  border: 1px solid rgba(255,255,255,.07);
+
+  background: rgba(255,255,255,.025);
+}
+
+/* FIRE */
+
+.vip-reveal-fire {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.vip-reveal-fire i {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #ffb347;
+
+  box-shadow:
+    0 0 7px #ff9a30,
+    0 0 17px rgba(255,70,20,.8);
+
+  animation:
+    vipRevealFire
+    1.2s cubic-bezier(.15,.8,.25,1)
+    forwards;
+
+  animation-delay:
+    calc(var(--fire-index, 0) * 18ms);
+}
+
+.vip-reveal-fire i:nth-child(3n) {
+  width: 8px;
+  height: 8px;
+}
+
+.vip-reveal-fire i:nth-child(4n) {
+  width: 3px;
+  height: 3px;
+}
+
+.vip-reveal-fire i:nth-child(1)  { --fx:-280px; --fy:-210px; }
+.vip-reveal-fire i:nth-child(2)  { --fx:240px;  --fy:-250px; }
+.vip-reveal-fire i:nth-child(3)  { --fx:-330px; --fy:-80px; }
+.vip-reveal-fire i:nth-child(4)  { --fx:320px;  --fy:-120px; }
+.vip-reveal-fire i:nth-child(5)  { --fx:-260px; --fy:160px; }
+.vip-reveal-fire i:nth-child(6)  { --fx:300px;  --fy:180px; }
+.vip-reveal-fire i:nth-child(7)  { --fx:-180px; --fy:280px; }
+.vip-reveal-fire i:nth-child(8)  { --fx:190px;  --fy:300px; }
+.vip-reveal-fire i:nth-child(9)  { --fx:-380px; --fy:40px; }
+.vip-reveal-fire i:nth-child(10) { --fx:380px;  --fy:30px; }
+
+.vip-reveal-fire i:nth-child(n+11) {
+  --fx: calc((var(--n, 1) * 37px) - 180px);
+  --fy: calc((var(--n, 1) * 23px) - 130px);
+}
+
+@keyframes vipRevealFire {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.3);
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc(-50% + var(--fx)),
+        calc(-50% + var(--fy))
+      )
+      scale(.08);
+  }
+}
+
+@media (max-width: 380px) {
+  .vip-reveal-panel {
+    padding: 19px;
+    border-radius: 27px;
+  }
+
+  .vip-reveal-distance strong {
+    font-size: 56px;
+  }
+
+  .vip-reveal-stats > div {
+    min-height: 70px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vip-reveal-fire {
+    display: none;
+  }
+
+  .vip-reveal-panel {
+    transition: none;
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   🗑️🔥 VELO VIP HISTORY 4.2 — DELETE ANIMATION
+   ========================================================= */
+
+#profileHistory .history-item.history-delete-start {
+  animation: vipHistoryDelete .55s cubic-bezier(.4,0,.2,1) forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#profileHistory .history-item.history-delete-start::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+  border-radius: inherit;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255,100,70,.28),
+      transparent 55%
+    );
+
+  animation: vipDeleteFlash .55s ease-out forwards;
+}
+
+@keyframes vipHistoryDelete {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+
+  20% {
+    opacity: 1;
+    transform: scale(1.015);
+    filter: brightness(1.35);
+  }
+
+  55% {
+    opacity: .7;
+    transform: scale(.97) translateX(5px);
+    filter: brightness(1.15);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(.82) translateX(-18px);
+    filter: brightness(.7);
+  }
+}
+
+@keyframes vipDeleteFlash {
+  0% {
+    opacity: 0;
+    transform: scale(.7);
+  }
+
+  25% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+/* Контейнер после удаления */
+#profileHistory.history-delete-reflow {
+  animation: vipHistoryReflow .35s ease-out;
+}
+
+@keyframes vipHistoryReflow {
+  0% {
+    opacity: .65;
+    transform: translateY(5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #profileHistory .history-item.history-delete-start,
+  #profileHistory.history-delete-reflow {
+    animation: none;
+  }
+
+  #profileHistory .history-item.history-delete-start {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   💥🔥 VELO VIP HISTORY 4.3 — MASS DELETE EXPLOSION
+   ========================================================= */
+
+#profileHistory.history-mass-delete {
+  position: relative;
+  animation: vipMassDeleteShake .75s ease-out forwards;
+}
+
+#profileHistory.history-mass-delete::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  z-index: 50;
+  pointer-events: none;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255,245,190,.95) 0%,
+    rgba(255,150,45,.8) 18%,
+    rgba(255,60,20,.45) 42%,
+    transparent 72%
+  );
+
+  box-shadow:
+    0 0 25px rgba(255,180,50,.9),
+    0 0 60px rgba(255,70,20,.65),
+    0 0 110px rgba(255,40,10,.35);
+
+  transform: translate(-50%, -50%) scale(.2);
+  animation: vipMassExplosion .85s cubic-bezier(.15,.8,.25,1) forwards;
+}
+
+#profileHistory.history-mass-delete::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70px;
+  height: 70px;
+  z-index: 49;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 3px solid rgba(255,190,80,.8);
+
+  transform: translate(-50%, -50%) scale(.2);
+  animation: vipMassShockwave .85s ease-out forwards;
+}
+
+/* Частицы создаются JS */
+.vip-mass-particle {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: var(--size, 7px);
+  height: var(--size, 7px);
+  z-index: 100001;
+  pointer-events: none;
+  border-radius: 50%;
+
+  background: #ffb347;
+
+  box-shadow:
+    0 0 8px #ff9a30,
+    0 0 20px rgba(255,60,15,.9);
+
+  animation:
+    vipMassParticle
+    .9s cubic-bezier(.12,.75,.2,1)
+    forwards;
+
+  animation-delay: var(--delay, 0ms);
+}
+
+.vip-mass-particle:nth-child(3n) {
+  background: #ffe08a;
+}
+
+.vip-mass-particle:nth-child(4n) {
+  border-radius: 2px;
+}
+
+@keyframes vipMassExplosion {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(.2);
+  }
+
+  25% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(2.5);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(8);
+  }
+}
+
+@keyframes vipMassShockwave {
+  0% {
+    opacity: .9;
+    transform: translate(-50%, -50%) scale(.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(9);
+  }
+}
+
+@keyframes vipMassParticle {
+  0% {
+    opacity: 1;
+    transform:
+      translate(-50%, -50%)
+      scale(1.5);
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc(-50% + var(--x)),
+        calc(-50% + var(--y))
+      )
+      rotate(540deg)
+      scale(.08);
+  }
+}
+
+@keyframes vipMassDeleteShake {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  12% {
+    transform: translate(-5px, 2px) scale(1.01);
+  }
+
+  24% {
+    transform: translate(6px, -2px) scale(1.015);
+  }
+
+  36% {
+    transform: translate(-5px, 2px) scale(1.01);
+  }
+
+  48% {
+    transform: translate(4px, -1px) scale(1);
+  }
+
+  70% {
+    transform: translate(0, 0) scale(.98);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(.94);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #profileHistory.history-mass-delete {
+    animation: none;
+  }
+
+  #profileHistory.history-mass-delete::before,
+  #profileHistory.history-mass-delete::after,
+  .vip-mass-particle {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   ✨🚴 VELO VIP HISTORY 4.4 — NEW RIDE ARRIVAL
+   ========================================================= */
+
+#profileHistory .history-item.history-new-ride {
+  position: relative;
+  overflow: hidden;
+
+  animation:
+    vipNewRideEnter .9s cubic-bezier(.16,1,.3,1) forwards;
+
+  transform-origin: center top;
+}
+
+/* Световой проход по карточке */
+#profileHistory .history-item.history-new-ride::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: -70%;
+
+  width: 45%;
+  height: 100%;
+
+  z-index: 10;
+  pointer-events: none;
+
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(120,225,255,.08),
+    rgba(255,255,255,.28),
+    rgba(120,225,255,.08),
+    transparent
+  );
+
+  transform: skewX(-18deg);
+
+  animation: vipNewRideSweep 1.05s ease-out .15s forwards;
+}
+
+/* Светящийся контур */
+#profileHistory .history-item.history-new-ride::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  z-index: 9;
+  pointer-events: none;
+
+  border-radius: inherit;
+  border: 1px solid rgba(103,220,255,.45);
+
+  box-shadow:
+    0 0 18px rgba(103,220,255,.18),
+    0 0 45px rgba(80,190,255,.10);
+
+  animation: vipNewRideGlow 1.2s ease-out forwards;
+}
+
+@keyframes vipNewRideEnter {
+  0% {
+    opacity: 0;
+    transform:
+      translateY(45px)
+      scale(.88)
+      rotateX(8deg);
+
+    filter: brightness(.7) blur(2px);
+  }
+
+  35% {
+    opacity: 1;
+    transform:
+      translateY(-7px)
+      scale(1.025)
+      rotateX(0deg);
+
+    filter: brightness(1.3) blur(0);
+  }
+
+  58% {
+    transform:
+      translateY(3px)
+      scale(.99);
+  }
+
+  78% {
+    transform:
+      translateY(-2px)
+      scale(1.008);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter: brightness(1);
+  }
+}
+
+@keyframes vipNewRideSweep {
+  0% {
+    left: -70%;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+@keyframes vipNewRideGlow {
+  0% {
+    opacity: 0;
+    transform: scale(.94);
+  }
+
+  25% {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+/* Статистика появляется с небольшим движением */
+#profileHistory .history-item.history-new-ride
+.history-item-stats span {
+  animation: vipNewRideStat .55s ease-out both;
+}
+
+#profileHistory .history-item.history-new-ride
+.history-item-stats span:nth-child(1) {
+  animation-delay: .22s;
+}
+
+#profileHistory .history-item.history-new-ride
+.history-item-stats span:nth-child(2) {
+  animation-delay: .30s;
+}
+
+#profileHistory .history-item.history-new-ride
+.history-item-stats span:nth-child(3) {
+  animation-delay: .38s;
+}
+
+#profileHistory .history-item.history-new-ride
+.history-item-stats span:nth-child(4) {
+  animation-delay: .46s;
+}
+
+@keyframes vipNewRideStat {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #profileHistory .history-item.history-new-ride,
+  #profileHistory .history-item.history-new-ride::before,
+  #profileHistory .history-item.history-new-ride::after,
+  #profileHistory .history-item.history-new-ride
+  .history-item-stats span {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   🚴🔥 VELO VIP HISTORY 4.5 — RESULT ANIMATION
+   ========================================================= */
+
+.vip-reveal-distance strong,
+.vip-reveal-stats strong {
+  font-variant-numeric: tabular-nums;
+  will-change: contents;
+}
+
+.vip-reveal-distance {
+  position: relative;
+}
+
+.vip-reveal-distance::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 20%;
+  bottom: -10px;
+  height: 2px;
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,180,70,.75),
+      transparent
+    );
+
+  opacity: 0;
+  transform: scaleX(.2);
+
+  animation:
+    vipResultLine .8s ease-out .35s forwards;
+}
+
+.vip-reveal-stats > div {
+  opacity: 0;
+  transform: translateY(18px) scale(.94);
+
+  animation:
+    vipResultStatEnter
+    .6s cubic-bezier(.16,1,.3,1)
+    forwards;
+}
+
+.vip-reveal-stats > div:nth-child(1) {
+  animation-delay: .35s;
+}
+
+.vip-reveal-stats > div:nth-child(2) {
+  animation-delay: .45s;
+}
+
+.vip-reveal-stats > div:nth-child(3) {
+  animation-delay: .55s;
+}
+
+.vip-reveal-stats > div:nth-child(4) {
+  animation-delay: .65s;
+}
+
+.vip-reveal-route {
+  opacity: 0;
+  transform: translateY(18px);
+  animation:
+    vipResultRouteEnter
+    .7s ease-out .78s forwards;
+}
+
+.vip-result-pulse .vip-reveal-panel {
+  animation:
+    vipResultPulse .85s ease-out;
+}
+
+@keyframes vipResultStatEnter {
+  0% {
+    opacity: 0;
+    transform:
+      translateY(18px)
+      scale(.94);
+  }
+
+  70% {
+    opacity: 1;
+    transform:
+      translateY(-2px)
+      scale(1.015);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes vipResultLine {
+  0% {
+    opacity: 0;
+    transform: scaleX(.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes vipResultRouteEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vipResultPulse {
+  0% {
+    transform: scale(1);
+    box-shadow:
+      0 35px 90px rgba(0,0,0,.65),
+      0 0 70px rgba(255,100,30,.10);
+  }
+
+  35% {
+    transform: scale(1.018);
+    box-shadow:
+      0 40px 100px rgba(0,0,0,.7),
+      0 0 80px rgba(255,130,40,.28),
+      0 0 150px rgba(255,70,20,.10);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vip-reveal-distance::after,
+  .vip-reveal-stats > div,
+  .vip-reveal-route,
+  .vip-result-pulse .vip-reveal-panel {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   🚴✨ VELO VIP HISTORY 4.6 — CARD INTERACTION
+   ========================================================= */
+
+#profileHistory .history-item {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  will-change: transform, box-shadow;
+}
+
+#profileHistory .history-item.vip-card-touch {
+  animation:
+    vipHistoryCardTouch
+    .65s cubic-bezier(.16,1,.3,1);
+}
+
+#profileHistory .history-item.vip-card-touch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  border-radius: inherit;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(103,220,255,.16),
+      transparent 58%
+    );
+
+  animation:
+    vipCardTouchGlow
+    .65s ease-out forwards;
+}
+
+@keyframes vipHistoryCardTouch {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform:
+      scale(1.018)
+      translateY(-2px);
+    box-shadow:
+      0 28px 70px rgba(0,0,0,.48),
+      0 0 35px rgba(103,220,255,.16);
+  }
+
+  55% {
+    transform:
+      scale(.992)
+      translateY(1px);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes vipCardTouchGlow {
+  0% {
+    opacity: 0;
+    transform: scale(.8);
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #profileHistory .history-item.vip-card-touch,
+  #profileHistory .history-item.vip-card-touch::before {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   🚴✨ VELO VIP HISTORY 4.7 — LIVE CARD MOTION
+   ========================================================= */
+
+#profileHistory .history-item.vip-card-moving {
+  transform:
+    perspective(700px)
+    rotateX(var(--vip-rotate-x, 0deg))
+    rotateY(var(--vip-rotate-y, 0deg))
+    scale(1.012);
+
+  transition:
+    transform .08s linear,
+    box-shadow .12s ease;
+
+  box-shadow:
+    0 28px 75px rgba(0,0,0,.45),
+    0 0 32px rgba(103,220,255,.13);
+}
+
+#profileHistory .history-item.vip-card-moving::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 7;
+  pointer-events: none;
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent 25%,
+      rgba(255,255,255,.18) 48%,
+      rgba(103,220,255,.14) 52%,
+      transparent 75%
+    );
+
+  background-size: 220% 100%;
+
+  animation:
+    vipCardMovingShine
+    1.1s linear infinite;
+}
+
+@keyframes vipCardMovingShine {
+  0% {
+    background-position: 120% 0;
+  }
+
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+@media (max-width: 600px) {
+  #profileHistory .history-item.vip-card-moving {
+    transform:
+      scale(1.008);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #profileHistory .history-item.vip-card-moving {
+    transform: none;
+    transition: none;
+  }
+
+  #profileHistory .history-item.vip-card-moving::before {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   ✨🚴 VELO VIP HISTORY 4.9 — FINAL HISTORY POLISH
+   ========================================================= */
+
+#profileHistory .history-item {
+  transform-origin: center center;
+  backface-visibility: hidden;
+}
+
+#profileHistory.history-delete-reflow .history-item {
+  animation: vipHistoryCardReflow .45s cubic-bezier(.16,1,.3,1) both;
+}
+
+#profileHistory.history-delete-reflow .history-item:nth-child(1) {
+  animation-delay: .03s;
+}
+
+#profileHistory.history-delete-reflow .history-item:nth-child(2) {
+  animation-delay: .07s;
+}
+
+#profileHistory.history-delete-reflow .history-item:nth-child(3) {
+  animation-delay: .11s;
+}
+
+#profileHistory.history-delete-reflow .history-item:nth-child(4) {
+  animation-delay: .15s;
+}
+
+@keyframes vipHistoryCardReflow {
+  0% {
+    opacity: .65;
+    transform: translateY(12px) scale(.985);
+  }
+
+  55% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.006);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Плавное появление пустой истории */
+#profileHistory .history-empty,
+#profileHistory .empty-history,
+#profileHistory .no-history {
+  animation: vipHistoryEmptyEnter .55s ease-out both;
+}
+
+@keyframes vipHistoryEmptyEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(.96);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Мягкий свет вокруг активной истории */
+#profileHistory {
+  position: relative;
+}
+
+#profileHistory::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 5%;
+  height: 120px;
+  pointer-events: none;
+  z-index: -1;
+
+  background: radial-gradient(
+    ellipse,
+    rgba(90,200,255,.045),
+    transparent 70%
+  );
+
+  filter: blur(18px);
+}
+
+/* Уважение системной настройки движения */
+@media (prefers-reduced-motion: reduce) {
+  #profileHistory.history-delete-reflow .history-item,
+  #profileHistory .history-empty,
+  #profileHistory .empty-history,
+  #profileHistory .no-history {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   🏆🚴 VELO VIP ACHIEVEMENTS 5.0 — FOUNDATION
+   ========================================================= */
+
+.vip-achievements {
+  margin-top: 20px;
+}
+
+.vip-achievements-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.vip-achievements-title {
+  font-size: 17px;
+  font-weight: 950;
+  letter-spacing: -.3px;
+}
+
+.vip-achievements-progress {
+  font-size: 10px;
+  font-weight: 900;
+  color: rgba(255,255,255,.4);
+}
+
+.vip-achievements-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.vip-achievement-card {
+  position: relative;
+  min-height: 112px;
+  padding: 15px;
+  box-sizing: border-box;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.018)
+    );
+
+  border: 1px solid rgba(255,255,255,.065);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.045),
+    0 12px 30px rgba(0,0,0,.18);
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.vip-achievement-card.unlocked {
+  border-color:
+    rgba(255,190,90,.25);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 12px 35px rgba(0,0,0,.22),
+    0 0 25px rgba(255,150,40,.07);
+}
+
+.vip-achievement-card.locked {
+  opacity: .42;
+  filter: grayscale(.7);
+}
+
+.vip-achievement-icon {
+  font-size: 25px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.vip-achievement-name {
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.vip-achievement-description {
+  margin-top: 4px;
+  font-size: 9px;
+  line-height: 1.4;
+  color: rgba(255,255,255,.38);
+}
+
+.vip-achievement-card.unlocked
+.vip-achievement-icon {
+  animation:
+    vipAchievementIcon .7s
+    cubic-bezier(.16,1,.3,1);
+}
+
+@keyframes vipAchievementIcon {
+  0% {
+    transform:
+      scale(.65)
+      rotate(-12deg);
+    opacity: .2;
+  }
+
+  55% {
+    transform:
+      scale(1.18)
+      rotate(5deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      scale(1)
+      rotate(0);
+  }
+}
+
+@media (max-width: 380px) {
+  .vip-achievements-grid {
+    gap: 8px;
+  }
+
+  .vip-achievement-card {
+    padding: 12px;
+    min-height: 105px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vip-achievement-card,
+  .vip-achievement-card.unlocked
+  .vip-achievement-icon {
+    animation: none;
+    transition: none;
+  }
+}
+
+
+/* =========================================================
+   🏆🚴 VELO VIP ACHIEVEMENTS 5.1 — UI
+   ========================================================= */
+
+.vip-achievements-progress-bar {
+  width: 100%;
+  height: 5px;
+  margin: 8px 0 14px;
+
+  overflow: hidden;
+  border-radius: 999px;
+
+  background:
+    rgba(255,255,255,.06);
+}
+
+.vip-achievements-progress-bar span {
+  display: block;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,170,60,.5),
+      rgba(255,220,120,.95)
+    );
+
+  box-shadow:
+    0 0 12px rgba(255,160,50,.25);
+
+  transition:
+    width .8s
+    cubic-bezier(.16,1,.3,1);
+}
+
+
+/* =========================================================
+   🏆🚴 VELO VIP ACHIEVEMENTS 5.1 — UI
+   ========================================================= */
+
+.vip-achievements-progress-bar {
+  width: 100%;
+  height: 5px;
+  margin: 8px 0 14px;
+
+  overflow: hidden;
+  border-radius: 999px;
+
+  background:
+    rgba(255,255,255,.06);
+}
+
+.vip-achievements-progress-bar span {
+  display: block;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,170,60,.5),
+      rgba(255,220,120,.95)
+    );
+
+  box-shadow:
+    0 0 12px rgba(255,160,50,.25);
+
+  transition:
+    width .8s
+    cubic-bezier(.16,1,.3,1);
+}
+
+
+/* =========================================================
+   🏆🔥 VELO VIP ACHIEVEMENTS 5.2 — UNLOCK EFFECT
+   ========================================================= */
+
+.vip-achievement-card {
+  overflow: hidden;
+}
+
+.vip-achievement-card.vip-achievement-unlock {
+  z-index: 20;
+
+  animation:
+    vipAchievementUnlock
+    1.2s
+    cubic-bezier(.16,1,.3,1);
+}
+
+.vip-achievement-card.vip-achievement-unlock::before {
+  content: "";
+
+  position: absolute;
+  inset: -35%;
+
+  pointer-events: none;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,210,100,.32),
+      rgba(255,120,30,.12) 35%,
+      transparent 68%
+    );
+
+  animation:
+    vipAchievementBurst
+    1.15s
+    ease-out forwards;
+}
+
+.vip-achievement-card.vip-achievement-unlock::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  border-radius: inherit;
+
+  border: 1px solid
+    rgba(255,210,110,.8);
+
+  box-shadow:
+    0 0 20px rgba(255,170,50,.45),
+    0 0 55px rgba(255,90,20,.2),
+    inset 0 0 25px rgba(255,170,50,.12);
+
+  animation:
+    vipAchievementRing
+    1.1s
+    ease-out forwards;
+}
+
+@keyframes vipAchievementUnlock {
+  0% {
+    opacity: .55;
+    transform:
+      scale(.82)
+      translateY(8px);
+    filter:
+      brightness(.8)
+      blur(1px);
+  }
+
+  25% {
+    opacity: 1;
+    transform:
+      scale(1.08)
+      translateY(-4px);
+    filter:
+      brightness(1.7)
+      blur(0);
+  }
+
+  45% {
+    transform:
+      scale(.98)
+      rotate(-1deg);
+  }
+
+  65% {
+    transform:
+      scale(1.025)
+      rotate(1deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      scale(1)
+      rotate(0);
+    filter:
+      brightness(1)
+      blur(0);
+  }
+}
+
+@keyframes vipAchievementBurst {
+  0% {
+    opacity: 0;
+    transform:
+      scale(.35);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      scale(1.35);
+  }
+}
+
+@keyframes vipAchievementRing {
+  0% {
+    opacity: 0;
+    transform:
+      scale(.75);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vip-achievement-card.vip-achievement-unlock,
+  .vip-achievement-card.vip-achievement-unlock::before,
+  .vip-achievement-card.vip-achievement-unlock::after {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   🏆✨ VELO VIP ACHIEVEMENTS 5.3 — UNLOCK TOAST
+   ========================================================= */
+
+.vip-achievement-toast {
+  position: fixed;
+  left: 50%;
+  top: 18px;
+
+  width: min(360px, calc(100vw - 28px));
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  padding: 13px 15px;
+
+  border-radius: 22px;
+
+  z-index: 99999;
+  pointer-events: none;
+
+  opacity: 0;
+
+  transform:
+    translate(-50%, -28px)
+    scale(.92);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(35,30,20,.96),
+      rgba(18,18,18,.97)
+    );
+
+  border:
+    1px solid rgba(255,205,100,.38);
+
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.55),
+    0 0 35px rgba(255,160,40,.16);
+
+  backdrop-filter: blur(16px);
+
+  transition:
+    opacity .45s ease,
+    transform .55s cubic-bezier(.16,1,.3,1);
+}
+
+.vip-achievement-toast.show {
+  opacity: 1;
+
+  transform:
+    translate(-50%, 0)
+    scale(1);
+}
+
+.vip-achievement-toast::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 15%,
+      rgba(255,220,120,.16) 45%,
+      rgba(255,255,255,.20) 50%,
+      rgba(255,220,120,.10) 55%,
+      transparent 85%
+    );
+
+  background-size: 220% 100%;
+
+  animation:
+    vipToastSweep 1.2s ease-out;
+}
+
+.vip-achievement-toast-icon {
+  width: 48px;
+  height: 48px;
+
+  flex: 0 0 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  font-size: 27px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,210,100,.25),
+      rgba(255,120,30,.08) 65%,
+      transparent
+    );
+
+  box-shadow:
+    0 0 20px rgba(255,170,50,.18);
+
+  animation:
+    vipToastIcon .8s cubic-bezier(.16,1,.3,1);
+}
+
+.vip-achievement-toast-content {
+  min-width: 0;
+}
+
+.vip-achievement-toast-label {
+  font-size: 8px;
+  font-weight: 950;
+
+  letter-spacing: 1.4px;
+
+  color: rgba(255,210,120,.72);
+
+  margin-bottom: 3px;
+}
+
+.vip-achievement-toast-title {
+  font-size: 14px;
+  font-weight: 950;
+
+  color: rgba(255,255,255,.95);
+
+  line-height: 1.2;
+}
+
+.vip-achievement-toast-description {
+  margin-top: 3px;
+
+  font-size: 9px;
+
+  color: rgba(255,255,255,.48);
+
+  line-height: 1.35;
+}
+
+@keyframes vipToastSweep {
+  0% {
+    opacity: 0;
+    background-position: 120% 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    background-position: -120% 0;
+  }
+}
+
+@keyframes vipToastIcon {
+  0% {
+    opacity: 0;
+
+    transform:
+      scale(.45)
+      rotate(-18deg);
+  }
+
+  55% {
+    opacity: 1;
+
+    transform:
+      scale(1.18)
+      rotate(5deg);
+  }
+
+  100% {
+    transform:
+      scale(1)
+      rotate(0);
+  }
+}
+
+@media (max-width: 380px) {
+  .vip-achievement-toast {
+    top: 12px;
+
+    width: calc(100vw - 20px);
+
+    padding: 11px 12px;
+
+    border-radius: 19px;
+  }
+
+  .vip-achievement-toast-icon {
+    width: 43px;
+    height: 43px;
+
+    flex-basis: 43px;
+
+    font-size: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vip-achievement-toast,
+  .vip-achievement-toast.show {
+    transition: none;
+
+    transform:
+      translate(-50%, 0);
+  }
+
+  .vip-achievement-toast::before,
+  .vip-achievement-toast-icon {
+    animation: none;
+  }
+}
+
+
+/* ===== SIMPLE VELO QR ===== */
+
+.simple-share {
+  margin: 20px 0 28px;
+  padding: 16px;
+  border-radius: 22px;
+  border: 1px solid rgba(103,232,249,.16);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(34,211,238,.12), transparent 38%),
+    linear-gradient(145deg, #111c27, #0b1119);
+  box-shadow:
+    0 12px 32px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.simple-share-title {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 14px;
+}
+
+.simple-share-title > span {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  background: rgba(34,211,238,.10);
+  border: 1px solid rgba(103,232,249,.16);
+  font-size: 20px;
+}
+
+.simple-share-title strong {
+  display: block;
+  font-size: 15px;
+}
+
+.simple-share-title small {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255,255,255,.48);
+  font-size: 10px;
+}
+
+.simple-share-body {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.simple-share-qr {
+  width: 118px;
+  height: 118px;
+  padding: 7px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.30);
+}
+
+.simple-share-link {
+  min-width: 0;
+  flex: 1;
+}
+
+.simple-share-link span {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(255,255,255,.42);
+  font-size: 10px;
+}
+
+.simple-share-link a {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #67e8f9;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 420px) {
+  .simple-share {
+    padding: 14px;
+  }
+
+  .simple-share-qr {
+    width: 105px;
+    height: 105px;
+  }
+}
+
+
+/* =========================================================
+   VELO SOS + NEARBY
+   ========================================================= */
+
+.velo-action-card {
+  cursor: pointer;
+}
+
+.velo-action-card:nth-child(1) > span {
+  background: linear-gradient(145deg, rgba(239,68,68,.16), rgba(127,29,29,.18));
+  border-color: rgba(248,113,113,.20);
+}
+
+.velo-action-card:nth-child(2) > span {
+  background: linear-gradient(145deg, rgba(34,211,238,.16), rgba(49,46,129,.20));
+}
+
+.velo-action-card:hover:nth-child(1) {
+  border-color: rgba(248,113,113,.42);
+  box-shadow:
+    0 18px 38px rgba(0,0,0,.34),
+    0 0 28px rgba(239,68,68,.10);
+}
+
+.velo-action-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 18px;
+}
+
+.velo-action-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.68);
+  backdrop-filter: blur(8px);
+}
+
+.velo-action-panel {
+  position: relative;
+  width: min(100%, 430px);
+  padding: 24px;
+  border-radius: 28px;
+  border: 1px solid rgba(103,232,249,.18);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(34,211,238,.14), transparent 35%),
+    linear-gradient(145deg,#111c27,#090f16);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  animation: veloModalUp .25s ease;
+}
+
+@keyframes veloModalUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.velo-action-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  color: rgba(255,255,255,.75);
+  background: rgba(255,255,255,.05);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.velo-action-icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  border-radius: 18px;
+  background: rgba(34,211,238,.10);
+  border: 1px solid rgba(103,232,249,.16);
+  font-size: 28px;
+}
+
+.velo-action-panel h2 {
+  margin: 4px 0 7px;
+  font-size: 25px;
+  letter-spacing: -.035em;
+}
+
+.velo-action-text {
+  margin: 0 0 18px;
+  color: rgba(255,255,255,.55);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.velo-action-buttons {
+  display: grid;
+  gap: 9px;
+}
+
+.velo-modal-btn {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(103,232,249,.13);
+  color: #fff;
+  background: rgba(255,255,255,.045);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.velo-modal-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(103,232,249,.32);
+  background: rgba(103,232,249,.07);
+}
+
+.velo-modal-btn.primary {
+  border-color: rgba(34,211,238,.35);
+  background: linear-gradient(135deg,#22d3ee,#312e81);
+}
+
+.velo-modal-btn:disabled {
+  opacity: .65;
+  cursor: default;
+  transform: none;
+}
+
+@media (max-width: 560px) {
+  .velo-action-modal {
+    padding: 12px;
+  }
+
+  .velo-action-panel {
+    padding: 21px;
+    border-radius: 25px;
+  }
+}
+
+
+
+/* ===== VELO V15 NEON SOCIAL ===== */
+
+.social-search-card,
+.social-friends-card,
+.social-requests-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 255, 255, 0.22);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(10, 18, 30, 0.96),
+      rgba(5, 10, 20, 0.94)
+    );
+  box-shadow:
+    0 0 18px rgba(0, 255, 255, 0.08),
+    inset 0 0 22px rgba(0, 255, 255, 0.025);
+}
+
+.social-search-card::before,
+.social-friends-card::before,
+.social-requests-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 255, 0.8),
+    transparent
+  );
+}
+
+.social-search-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.social-search-row input {
+  flex: 1;
+  border: 1px solid rgba(0, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 12px rgba(0, 255, 255, 0.035);
+}
+
+.social-search-row input:focus {
+  border-color: rgba(0, 255, 255, 0.7);
+  box-shadow:
+    0 0 12px rgba(0, 255, 255, 0.12),
+    inset 0 0 12px rgba(0, 255, 255, 0.04);
+  outline: none;
+}
+
+#socialSearchButton,
+#socialRefreshFriends,
+#socialRefreshRequests {
+  border: 1px solid rgba(0, 255, 255, 0.45);
+  background: rgba(0, 255, 255, 0.07);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.08);
+  transition: 0.2s ease;
+}
+
+#socialSearchButton:hover,
+#socialRefreshFriends:hover,
+#socialRefreshRequests:hover {
+  border-color: rgba(0, 255, 255, 0.9);
+  box-shadow: 0 0 16px rgba(0, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.social-user-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  border: 1px solid rgba(0, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.025);
+}
+
+.social-user-avatar {
+  display: grid;
+  place-items: center;
+  min-width: 46px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 255, 255, 0.45);
+  background: rgba(0, 255, 255, 0.06);
+  box-shadow:
+    0 0 12px rgba(0, 255, 255, 0.15),
+    inset 0 0 10px rgba(0, 255, 255, 0.08);
+}
+
+.social-user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.social-user-info strong {
+  display: block;
+}
+
+.social-user-info span {
+  display: block;
+  opacity: 0.65;
+}
+
+.social-user-info small {
+  display: block;
+  margin-top: 4px;
+  opacity: 0.55;
+}
+
+.social-friend-status {
+  color: #7ffcff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.social-friend-action {
+  margin-top: 12px;
+}
+
+.social-add-friend-btn,
+.social-accept-btn,
+.social-reject-btn {
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  background: rgba(0, 255, 255, 0.07);
+  transition: 0.2s ease;
+}
+
+.social-add-friend-btn:hover,
+.social-accept-btn:hover {
+  border-color: rgba(0, 255, 255, 0.9);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+.social-reject-btn {
+  border-color: rgba(255, 90, 120, 0.35);
+  background: rgba(255, 70, 100, 0.05);
+}
+
+.social-reject-btn:hover {
+  border-color: rgba(255, 90, 120, 0.75);
+  box-shadow: 0 0 14px rgba(255, 70, 100, 0.15);
+}
+
+.social-request-card {
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.social-request-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.social-result-empty,
+.social-result-error {
+  border: 1px dashed rgba(0, 255, 255, 0.15);
+  background: rgba(0, 255, 255, 0.025);
+  box-shadow: inset 0 0 12px rgba(0, 255, 255, 0.02);
+}
+
+.social-result-error {
+  border-color: rgba(255, 90, 120, 0.25);
+}
+
+.social-friends-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.social-friends-header h3 {
+  margin: 0;
+}
+
+@media (max-width: 520px) {
+  .social-search-row {
+    flex-direction: column;
+  }
+
+  .social-request-actions {
+    flex-direction: column;
+  }
+
+  .social-user-card {
+    align-items: flex-start;
+  }
+
+  .social-friend-status {
+    margin-left: auto;
+  }
+}
+
+/* ===== END V15 NEON SOCIAL ===== */
+
