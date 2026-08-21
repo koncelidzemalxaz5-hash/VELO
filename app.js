@@ -4233,3 +4233,66 @@ if ("serviceWorker" in navigator) {
       .catch(error => console.error("VELO PWA: Service Worker failed:", error));
   });
 }
+
+/* ===== VELO SMART APP INSTALL ===== */
+(() => {
+  let veloInstallPrompt = null;
+
+  const isIOS =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    veloInstallPrompt = event;
+
+    const banner = document.getElementById("installBanner");
+    if (banner && !isStandalone) {
+      banner.style.display = "block";
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("installBanner");
+    const installBtn = document.getElementById("installBtn");
+    const iosHelp = document.getElementById("iosInstallHelp");
+    const iosCloseBtn = document.getElementById("iosCloseBtn");
+
+    if (!banner || !installBtn || isStandalone) return;
+
+    if (isIOS) {
+      banner.style.display = "block";
+    }
+
+    installBtn.addEventListener("click", async () => {
+      if (isIOS) {
+        if (iosHelp) iosHelp.style.display = "block";
+        return;
+      }
+
+      if (!veloInstallPrompt) return;
+
+      veloInstallPrompt.prompt();
+      await veloInstallPrompt.userChoice;
+
+      veloInstallPrompt = null;
+      banner.style.display = "none";
+    });
+
+    if (iosCloseBtn) {
+      iosCloseBtn.addEventListener("click", () => {
+        if (iosHelp) iosHelp.style.display = "none";
+      });
+    }
+  });
+
+  window.addEventListener("appinstalled", () => {
+    const banner = document.getElementById("installBanner");
+    if (banner) banner.style.display = "none";
+    veloInstallPrompt = null;
+  });
+})();
