@@ -4329,30 +4329,107 @@ function updateWalletUI(){
   }
 }
 
-premiumButtonEl?.addEventListener("click", ()=>{
-  alert("Экран покупки Premium подключим на следующем этапе.");
+/* ===== VELO TEST PAYMENTS ===== */
+
+const paymentHistoryKey = "velo_payment_history";
+
+let paymentHistory = JSON.parse(
+  localStorage.getItem(paymentHistoryKey) || "[]"
+);
+
+function savePaymentHistory() {
+  localStorage.setItem(
+    paymentHistoryKey,
+    JSON.stringify(paymentHistory)
+  );
+}
+
+function createTestPayment(type, amount) {
+  const payment = {
+    id: "TEST-" + Date.now(),
+    type,
+    amount,
+    status: "PENDING",
+    createdAt: new Date().toISOString()
+  };
+
+  paymentHistory.unshift(payment);
+  savePaymentHistory();
+
+  return payment;
+}
+
+function confirmTestPayment(paymentId) {
+  const payment = paymentHistory.find(
+    item => item.id === paymentId
+  );
+
+  if (!payment || payment.status !== "PENDING") {
+    return false;
+  }
+
+  payment.status = "PAID";
+  payment.paidAt = new Date().toISOString();
+
+  savePaymentHistory();
+
+  wallet.balance += payment.amount;
+  wallet.month += payment.amount;
+  wallet.total += payment.amount;
+
+  if (payment.type === "PREMIUM") {
+    premium = "PREMIUM";
+    localStorage.setItem("velo_premium", "PREMIUM");
+  }
+
+  localStorage.setItem(
+    "velo_wallet",
+    JSON.stringify(wallet)
+  );
+
+  updateWalletUI();
+
+  return true;
+}
+
+premiumButtonEl?.addEventListener("click", () => {
+  const payment = createTestPayment("PREMIUM", 10);
+
+  const confirmed = confirm(
+    "ТЕСТОВАЯ ОПЛАТА\n\n" +
+    "VELO PREMIUM — 10 ₾\n\n" +
+    "Это тестовый платёж. Реальные деньги не списываются.\n\n" +
+    "Подтвердить тестовую оплату?"
+  );
+
+  if (confirmed) {
+    confirmTestPayment(payment.id);
+    alert("⭐ Тестовый Premium активирован!");
+  }
 });
 
-donateButton?.addEventListener("click", ()=>{
-  const amount = Number(donationInput.value);
+donateButton?.addEventListener("click", () => {
+  const amount = Number(donationInput?.value);
 
-  if(!amount || amount <= 0){
+  if (!amount || amount <= 0) {
     alert("Введите сумму.");
     return;
   }
 
-  wallet.balance += amount;
-  wallet.today += amount;
-  wallet.month += amount;
-  wallet.total += amount;
+  const payment = createTestPayment("DONATION", amount);
 
-  localStorage.setItem("velo_wallet", JSON.stringify(wallet));
+  const confirmed = confirm(
+    "ТЕСТОВОЕ ПОЖЕРТВОВАНИЕ\n\n" +
+    amount + " ₾\n\n" +
+    "Реальные деньги не списываются.\n\n" +
+    "Подтвердить тестовое пожертвование?"
+  );
 
-  donationInput.value = "";
-  updateWalletUI();
-
-  alert("❤️ Спасибо за поддержку VELO!");
+  if (confirmed) {
+    confirmTestPayment(payment.id);
+    donationInput.value = "";
+    alert("❤️ Тестовое пожертвование подтверждено!");
+  }
 });
 
-updateWalletUI();
 
