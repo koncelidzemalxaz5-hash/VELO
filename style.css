@@ -5845,3 +5845,58 @@ button {
   background: transparent;
   color: #00ff66;
 }
+
+/* ===== VELO PREMIUM ===== */
+
+.premium-card{
+  border:2px solid #00ff66;
+  border-radius:20px;
+  padding:18px;
+  background:rgba(0,255,102,.06);
+  box-shadow:0 0 20px rgba(0,255,102,.18);
+}
+
+.premium-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.premium-title{
+  color:#00ff66;
+  font-size:22px;
+  font-weight:700;
+}
+
+.premium-status{
+  color:#9ca3af;
+  margin-top:4px;
+}
+
+.premium-badge{
+  background:#00ff66;
+  color:#111827;
+  font-weight:700;
+  padding:8px 14px;
+  border-radius:999px;
+}
+
+.premium-period{
+  margin:14px 0;
+  color:#d1d5db;
+}
+
+.premium-features{
+  display:grid;
+  gap:8px;
+  margin-bottom:16px;
+}
+
+.premium-features div{
+  color:#00ff66;
+}
+
+#premiumButton{
+  width:100%;
+}

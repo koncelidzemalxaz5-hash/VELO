@@ -4296,3 +4296,63 @@ if ("serviceWorker" in navigator) {
     veloInstallPrompt = null;
   });
 })();
+
+/* ===== VELO Wallet & Premium ===== */
+
+const premiumStatusEl = document.getElementById("premiumStatus");
+const premiumBadgeEl = document.getElementById("premiumBadge");
+const premiumButtonEl = document.getElementById("premiumButton");
+
+const walletBalanceEl = document.getElementById("walletBalance");
+const walletTodayEl = document.getElementById("walletToday");
+const walletMonthEl = document.getElementById("walletMonth");
+const walletTotalEl = document.getElementById("walletTotal");
+
+const donationInput = document.getElementById("donationAmount");
+const donateButton = document.getElementById("donateButton");
+
+let wallet = JSON.parse(localStorage.getItem("velo_wallet") || '{"balance":0,"today":0,"month":0,"total":0}');
+let premium = localStorage.getItem("velo_premium") || "FREE";
+
+function updateWalletUI(){
+  walletBalanceEl.textContent = wallet.balance + " ₾";
+  walletTodayEl.textContent = wallet.today + " ₾";
+  walletMonthEl.textContent = wallet.month + " ₾";
+  walletTotalEl.textContent = wallet.total + " ₾";
+
+  if(premium === "PREMIUM"){
+    premiumStatusEl.textContent = "🟢 Premium активен";
+    premiumBadgeEl.textContent = "PREMIUM";
+  }else{
+    premiumStatusEl.textContent = "🔒 Premium не активен";
+    premiumBadgeEl.textContent = "FREE";
+  }
+}
+
+premiumButtonEl?.addEventListener("click", ()=>{
+  alert("Экран покупки Premium подключим на следующем этапе.");
+});
+
+donateButton?.addEventListener("click", ()=>{
+  const amount = Number(donationInput.value);
+
+  if(!amount || amount <= 0){
+    alert("Введите сумму.");
+    return;
+  }
+
+  wallet.balance += amount;
+  wallet.today += amount;
+  wallet.month += amount;
+  wallet.total += amount;
+
+  localStorage.setItem("velo_wallet", JSON.stringify(wallet));
+
+  donationInput.value = "";
+  updateWalletUI();
+
+  alert("❤️ Спасибо за поддержку VELO!");
+});
+
+updateWalletUI();
+

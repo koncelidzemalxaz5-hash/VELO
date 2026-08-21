@@ -498,6 +498,36 @@
       </div>
     </div>
 
+    <section class="profile-section monetization-section" id="premiumSection">
+      <h3>⭐ VELO PREMIUM</h3>
+
+      <div class="premium-card">
+        <div class="premium-header">
+          <div>
+            <div class="premium-title">VELO PREMIUM</div>
+            <div class="premium-status" id="premiumStatus">🔒 Premium не активен</div>
+          </div>
+
+          <div class="premium-badge" id="premiumBadge">FREE</div>
+        </div>
+
+        <div class="premium-period" id="premiumPeriod">
+          Подписка не оформлена
+        </div>
+
+        <div class="premium-features">
+          <div>✓ Расширенная статистика</div>
+          <div>✓ Premium Social</div>
+          <div>✓ Ride Story+</div>
+          <div>✓ Будущие Premium-функции</div>
+        </div>
+
+        <button id="premiumButton" class="primary-btn">
+          ⭐ Получить Premium
+        </button>
+      </div>
+    </section>
+
     <section class="profile-section">
       <h3>📊 Статистика</h3>
 
@@ -516,6 +546,47 @@
           <strong id="profileHours">0</strong>
           <span>часов</span>
         </div>
+      </div>
+    </section>
+
+    <section class="profile-section" id="walletSection">
+      <h3>💰 Мой кошелёк</h3>
+
+      <div class="premium-card">
+        <div class="profile-stats">
+          <div class="profile-stat">
+            <strong id="walletBalance">0 ₾</strong>
+            <span>Баланс</span>
+          </div>
+
+          <div class="profile-stat">
+            <strong id="walletToday">0 ₾</strong>
+            <span>Сегодня</span>
+          </div>
+
+          <div class="profile-stat">
+            <strong id="walletMonth">0 ₾</strong>
+            <span>Месяц</span>
+          </div>
+        </div>
+
+        <div class="premium-period">
+          Всего заработано: <strong id="walletTotal">0 ₾</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="profile-section" id="donateSection">
+      <h3>❤️ Поддержать VELO</h3>
+
+      <div class="premium-card">
+        <p>Поддержи развитие VELO любой суммой.</p>
+
+        <input id="donationAmount" type="number" placeholder="Введите сумму в ₾" min="1">
+
+        <button id="donateButton" class="primary-btn">
+          ❤️ Пожертвовать
+        </button>
       </div>
     </section>
 
