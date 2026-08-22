@@ -19,8 +19,13 @@ public class MainActivity extends Activity {
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
         settings.setGeolocationEnabled(true);
+        settings.setAllowFileAccess(true);
+        settings.setAllowContentAccess(true);
 
-        webView.loadUrl("https://koncelidzemalxaz5-hash.github.io/VELO/");
+        webView.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
+        webView.setNestedScrollingEnabled(false);
+
+        webView.loadUrl("file:///android_asset/index.html");
 
         setContentView(webView);
     }
