@@ -156,6 +156,7 @@ main {
   left: 0;
   right: 0;
   height: 75px;
+  z-index: 99999;
   background: #0e1319;
   border-top: 1px solid #202a35;
   display: flex;
@@ -5802,5 +5803,1366 @@ button {
 
 #startRide:hover {
   background: linear-gradient(135deg, #f1c75b, #ffd978) !important;
+}
+
+
+/* ============================================================
+   VELO V16 TEST — NEON HOME UI
+   Только визуальный слой. Рабочая логика не изменяется.
+   ============================================================ */
+
+:root {
+  --v16-bg: #050816;
+  --v16-panel: rgba(12, 18, 42, 0.82);
+  --v16-border: rgba(91, 104, 255, 0.28);
+  --v16-blue: #4d7cff;
+  --v16-purple: #9b5cff;
+  --v16-cyan: #35d9ff;
+  --v16-text: #f5f7ff;
+  --v16-muted: #8e9abb;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(69, 91, 255, .20), transparent 32%),
+    radial-gradient(circle at 90% 20%, rgba(155, 92, 255, .18), transparent 30%),
+    linear-gradient(180deg, #070a18 0%, #03050d 100%);
+  color: var(--v16-text);
+}
+
+/* Верхняя панель */
+
+.topbar {
+  background: rgba(5, 8, 22, .82);
+  border-bottom: 1px solid rgba(100, 120, 255, .18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.topbar .logo {
+  color: #ffffff;
+  letter-spacing: .14em;
+  text-shadow:
+    0 0 10px rgba(77, 124, 255, .9),
+    0 0 28px rgba(155, 92, 255, .65);
+}
+
+.profile-btn {
+  background: linear-gradient(135deg, #4d7cff, #9b5cff);
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow:
+    0 0 14px rgba(77,124,255,.45),
+    0 0 28px rgba(155,92,255,.25);
+}
+
+/* Главный экран */
+
+#home {
+  position: relative;
+  overflow: hidden;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  top: 70px;
+  left: -130px;
+  border-radius: 50%;
+  background: rgba(77,124,255,.16);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+#home::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  top: 300px;
+  right: -140px;
+  border-radius: 50%;
+  background: rgba(155,92,255,.14);
+  filter: blur(75px);
+  pointer-events: none;
+}
+
+/* QR */
+
+.simple-share {
+  position: relative;
+  z-index: 2;
+  background: var(--v16-panel);
+  border: 1px solid var(--v16-border);
+  border-radius: 22px;
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.35),
+    0 0 25px rgba(77,124,255,.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.simple-share-title strong,
+.simple-share-title small,
+.simple-share-link span,
+.simple-share-link a {
+  color: var(--v16-text);
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  z-index: 2;
+  padding-top: 28px;
+}
+
+.hero .eyebrow {
+  color: var(--v16-cyan);
+  text-shadow: 0 0 12px rgba(53,217,255,.55);
+}
+
+.hero h1 {
+  color: #ffffff;
+  text-shadow:
+    0 0 12px rgba(77,124,255,.45),
+    0 0 35px rgba(155,92,255,.25);
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, #4d7cff, #9b5cff, #35d9ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-text {
+  color: var(--v16-muted);
+}
+
+/* Главная кнопка */
+
+.primary-btn {
+  background: linear-gradient(135deg, #4d7cff 0%, #765cff 48%, #a44fff 100%);
+  border: 1px solid rgba(255,255,255,.16);
+  color: #ffffff;
+  box-shadow:
+    0 8px 25px rgba(77,124,255,.28),
+    0 0 30px rgba(155,92,255,.22);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 32px rgba(77,124,255,.38),
+    0 0 42px rgba(155,92,255,.30);
+}
+
+/* Статистика */
+
+.stats {
+  position: relative;
+  z-index: 2;
+  gap: 10px;
+}
+
+.stat-card {
+  background: linear-gradient(
+    145deg,
+    rgba(20,29,63,.92),
+    rgba(9,13,31,.88)
+  );
+  border: 1px solid var(--v16-border);
+  border-radius: 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 8px 25px rgba(0,0,0,.28);
+}
+
+.stat-card strong {
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(77,124,255,.5);
+}
+
+.stat-card span {
+  color: var(--v16-muted);
+}
+
+/* Карточки меню */
+
+.menu {
+  position: relative;
+  z-index: 2;
+}
+
+.menu h2 {
+  color: #ffffff;
+}
+
+.menu-grid {
+  gap: 12px;
+}
+
+.menu-card {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg,
+      rgba(19,27,61,.94),
+      rgba(8,12,29,.94)
+    );
+  border: 1px solid rgba(91,104,255,.28);
+  border-radius: 22px;
+  color: #ffffff;
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.04);
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.menu-card::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  right: -35px;
+  border-radius: 50%;
+  background: rgba(77,124,255,.16);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.menu-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(91,130,255,.65);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.35),
+    0 0 24px rgba(77,124,255,.16);
+}
+
+.menu-card span {
+  text-shadow:
+    0 0 12px rgba(77,124,255,.65);
+}
+
+.menu-card b {
+  color: #ffffff;
+}
+
+.menu-card small {
+  color: var(--v16-muted);
+}
+
+/* Нижняя навигация */
+
+.bottom-nav {
+  background: rgba(5,8,22,.88);
+  border-top: 1px solid rgba(91,104,255,.22);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 -8px 30px rgba(0,0,0,.3);
+}
+
+.nav-btn {
+  color: #717d9d;
+}
+
+.nav-btn.active {
+  color: #ffffff;
+  text-shadow:
+    0 0 10px rgba(77,124,255,.8),
+    0 0 22px rgba(155,92,255,.45);
+}
+
+.nav-btn.active::before {
+  background: linear-gradient(90deg, #4d7cff, #9b5cff);
+  box-shadow:
+    0 0 12px rgba(77,124,255,.8),
+    0 0 25px rgba(155,92,255,.45);
+}
+
+/* Мобильная адаптация */
+
+@media (max-width: 480px) {
+  .simple-share {
+    border-radius: 20px;
+  }
+
+  .menu-card {
+    min-height: 125px;
+  }
+
+  .stat-card {
+    border-radius: 18px;
+  }
+}
+
+
+/* ============================================================
+   VELO V16 TEST — NEON HOME UI
+   Только визуальный слой. Рабочая логика не изменяется.
+   ============================================================ */
+
+:root {
+  --v16-bg: #050816;
+  --v16-panel: rgba(12, 18, 42, 0.82);
+  --v16-border: rgba(91, 104, 255, 0.28);
+  --v16-blue: #4d7cff;
+  --v16-purple: #9b5cff;
+  --v16-cyan: #35d9ff;
+  --v16-text: #f5f7ff;
+  --v16-muted: #8e9abb;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(69, 91, 255, .20), transparent 32%),
+    radial-gradient(circle at 90% 20%, rgba(155, 92, 255, .18), transparent 30%),
+    linear-gradient(180deg, #070a18 0%, #03050d 100%);
+  color: var(--v16-text);
+}
+
+/* Верхняя панель */
+
+.topbar {
+  background: rgba(5, 8, 22, .82);
+  border-bottom: 1px solid rgba(100, 120, 255, .18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.topbar .logo {
+  color: #ffffff;
+  letter-spacing: .14em;
+  text-shadow:
+    0 0 10px rgba(77, 124, 255, .9),
+    0 0 28px rgba(155, 92, 255, .65);
+}
+
+.profile-btn {
+  background: linear-gradient(135deg, #4d7cff, #9b5cff);
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow:
+    0 0 14px rgba(77,124,255,.45),
+    0 0 28px rgba(155,92,255,.25);
+}
+
+/* Главный экран */
+
+#home {
+  position: relative;
+  overflow: hidden;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  top: 70px;
+  left: -130px;
+  border-radius: 50%;
+  background: rgba(77,124,255,.16);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+#home::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  top: 300px;
+  right: -140px;
+  border-radius: 50%;
+  background: rgba(155,92,255,.14);
+  filter: blur(75px);
+  pointer-events: none;
+}
+
+/* QR */
+
+.simple-share {
+  position: relative;
+  z-index: 2;
+  background: var(--v16-panel);
+  border: 1px solid var(--v16-border);
+  border-radius: 22px;
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.35),
+    0 0 25px rgba(77,124,255,.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.simple-share-title strong,
+.simple-share-title small,
+.simple-share-link span,
+.simple-share-link a {
+  color: var(--v16-text);
+}
+
+/* Hero */
+
+.hero {
+  position: relative;
+  z-index: 2;
+  padding-top: 28px;
+}
+
+.hero .eyebrow {
+  color: var(--v16-cyan);
+  text-shadow: 0 0 12px rgba(53,217,255,.55);
+}
+
+.hero h1 {
+  color: #ffffff;
+  text-shadow:
+    0 0 12px rgba(77,124,255,.45),
+    0 0 35px rgba(155,92,255,.25);
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, #4d7cff, #9b5cff, #35d9ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-text {
+  color: var(--v16-muted);
+}
+
+/* Главная кнопка */
+
+.primary-btn {
+  background: linear-gradient(135deg, #4d7cff 0%, #765cff 48%, #a44fff 100%);
+  border: 1px solid rgba(255,255,255,.16);
+  color: #ffffff;
+  box-shadow:
+    0 8px 25px rgba(77,124,255,.28),
+    0 0 30px rgba(155,92,255,.22);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 32px rgba(77,124,255,.38),
+    0 0 42px rgba(155,92,255,.30);
+}
+
+/* Статистика */
+
+.stats {
+  position: relative;
+  z-index: 2;
+  gap: 10px;
+}
+
+.stat-card {
+  background: linear-gradient(
+    145deg,
+    rgba(20,29,63,.92),
+    rgba(9,13,31,.88)
+  );
+  border: 1px solid var(--v16-border);
+  border-radius: 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 8px 25px rgba(0,0,0,.28);
+}
+
+.stat-card strong {
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(77,124,255,.5);
+}
+
+.stat-card span {
+  color: var(--v16-muted);
+}
+
+/* Карточки меню */
+
+.menu {
+  position: relative;
+  z-index: 2;
+}
+
+.menu h2 {
+  color: #ffffff;
+}
+
+.menu-grid {
+  gap: 12px;
+}
+
+.menu-card {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg,
+      rgba(19,27,61,.94),
+      rgba(8,12,29,.94)
+    );
+  border: 1px solid rgba(91,104,255,.28);
+  border-radius: 22px;
+  color: #ffffff;
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.04);
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.menu-card::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  right: -35px;
+  border-radius: 50%;
+  background: rgba(77,124,255,.16);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.menu-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(91,130,255,.65);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.35),
+    0 0 24px rgba(77,124,255,.16);
+}
+
+.menu-card span {
+  text-shadow:
+    0 0 12px rgba(77,124,255,.65);
+}
+
+.menu-card b {
+  color: #ffffff;
+}
+
+.menu-card small {
+  color: var(--v16-muted);
+}
+
+/* Нижняя навигация */
+
+.bottom-nav {
+  background: rgba(5,8,22,.88);
+  border-top: 1px solid rgba(91,104,255,.22);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 -8px 30px rgba(0,0,0,.3);
+}
+
+.nav-btn {
+  color: #717d9d;
+}
+
+.nav-btn.active {
+  color: #ffffff;
+  text-shadow:
+    0 0 10px rgba(77,124,255,.8),
+    0 0 22px rgba(155,92,255,.45);
+}
+
+.nav-btn.active::before {
+  background: linear-gradient(90deg, #4d7cff, #9b5cff);
+  box-shadow:
+    0 0 12px rgba(77,124,255,.8),
+    0 0 25px rgba(155,92,255,.45);
+}
+
+/* Мобильная адаптация */
+
+@media (max-width: 480px) {
+  .simple-share {
+    border-radius: 20px;
+  }
+
+  .menu-card {
+    min-height: 125px;
+  }
+
+  .stat-card {
+    border-radius: 18px;
+  }
+}
+
+/* ===== VELO APP INSTALL ===== */
+#installBanner {
+  text-align: center;
+  padding: 10px 14px;
+}
+
+#installBtn {
+  width: 100%;
+  padding: 13px 18px;
+  border: 1px solid #00ff66;
+  border-radius: 12px;
+  background: transparent;
+  color: #00ff66;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#installBtn:active {
+  opacity: 0.7;
+}
+
+#iosInstallHelp {
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #00ff66;
+  border-radius: 12px;
+  color: #00ff66;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+#iosCloseBtn {
+  margin-top: 8px;
+  padding: 7px 14px;
+  border: 1px solid #00ff66;
+  border-radius: 8px;
+  background: transparent;
+  color: #00ff66;
+}
+
+/* ===== VELO PREMIUM ===== */
+
+.premium-card{
+  border:2px solid #00ff66;
+  border-radius:20px;
+  padding:18px;
+  background:rgba(0,255,102,.06);
+  box-shadow:0 0 20px rgba(0,255,102,.18);
+}
+
+.premium-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.premium-title{
+  color:#00ff66;
+  font-size:22px;
+  font-weight:700;
+}
+
+.premium-status{
+  color:#9ca3af;
+  margin-top:4px;
+}
+
+.premium-badge{
+  background:#00ff66;
+  color:#111827;
+  font-weight:700;
+  padding:8px 14px;
+  border-radius:999px;
+}
+
+.premium-period{
+  margin:14px 0;
+  color:#d1d5db;
+}
+
+.premium-features{
+  display:grid;
+  gap:8px;
+  margin-bottom:16px;
+}
+
+.premium-features div{
+  color:#00ff66;
+}
+
+#premiumButton{
+  width:100%;
+}
+
+/* VELO ADVENTURE MODAL */
+
+.adventure-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.adventure-modal.active {
+  display: flex;
+}
+
+.adventure-modal-card {
+  position: relative;
+  width: min(100%, 430px);
+  padding: 28px 22px 22px;
+  border: 1px solid rgba(0, 255, 102, 0.4);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(0, 255, 102, 0.12), transparent 42%),
+    #050805;
+  box-shadow: 0 0 45px rgba(0, 255, 102, 0.12);
+  text-align: center;
+}
+
+.adventure-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  border: 0;
+  background: transparent;
+  color: #00ff66;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.adventure-modal-icon {
+  font-size: 48px;
+  margin: 8px 0 14px;
+}
+
+.adventure-modal-label {
+  color: #00ff66;
+  opacity: 0.65;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.adventure-modal-card h2 {
+  margin: 10px 0;
+  color: #00ff66;
+  font-size: 25px;
+}
+
+.adventure-modal-card p {
+  color: #00ff66;
+  opacity: 0.72;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.adventure-mission-box {
+  margin: 22px 0;
+  padding: 16px;
+  border: 1px solid rgba(0, 255, 102, 0.2);
+  border-radius: 16px;
+  background: rgba(0, 255, 102, 0.05);
+  color: #00ff66;
+}
+
+.adventure-mission-box div {
+  margin-bottom: 7px;
+  font-size: 10px;
+  opacity: 0.6;
+  letter-spacing: 1.5px;
+}
+
+.adventure-mission-box strong {
+  font-size: 14px;
+}
+
+#adventureStartButton {
+  width: 100%;
+}
+
+
+/* ===== VELO V16 — REPLACED GREEN UI ===== */
+
+:root {
+  --velo-green: #4d7cff;
+  --velo-green-soft: rgba(77,124,255,.16);
+  --velo-green-border: rgba(91,104,255,.45);
+  --velo-bg: #03050d;
+  --velo-card: #080c1d;
+}
+
+html,
+body {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(69,91,255,.20), transparent 32%),
+    radial-gradient(circle at 90% 20%, rgba(155,92,255,.18), transparent 30%),
+    linear-gradient(180deg,#070a18 0%,#03050d 100%) !important;
+  color: #f5f7ff !important;
+}
+
+body * {
+  color: inherit;
+}
+
+.topbar,
+.bottom-nav,
+.card,
+.profile-section,
+.premium-card,
+.bike-info-card,
+.achievement,
+.route-card,
+.adventure-card,
+.stats-card,
+.history-card,
+.modal,
+.panel,
+section {
+  background: rgba(8,12,29,.96) !important;
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+.logo,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+  color: #ffffff !important;
+}
+
+span,
+p,
+small,
+label,
+.profile-stat,
+.profile-stat span {
+  color: #8e9abb !important;
+}
+
+button,
+.primary-btn,
+.save-profile-btn,
+.profile-btn,
+.nav-btn,
+.tab-btn {
+  color: #ffffff !important;
+  border-color: rgba(91,104,255,.45) !important;
+  background: linear-gradient(135deg,#4d7cff,#765cff,#a44fff) !important;
+}
+
+button:hover,
+.primary-btn:hover,
+.save-profile-btn:hover,
+.profile-btn:hover,
+.nav-btn:hover,
+.tab-btn:hover,
+.active {
+  color: #ffffff !important;
+  background: linear-gradient(135deg,#4d7cff,#765cff,#a44fff) !important;
+  border-color: #4d7cff !important;
+}
+
+input,
+textarea,
+select {
+  color: #ffffff !important;
+  background: #050817 !important;
+  border-color: rgba(91,104,255,.45) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #717d9d !important;
+}
+
+a {
+  color: #4d7cff !important;
+}
+
+hr {
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+.achievement-progress,
+.progress {
+  background: rgba(77,124,255,.14) !important;
+}
+
+.progress-bar,
+.achievement-progress-bar {
+  background: linear-gradient(90deg,#4d7cff,#9b5cff,#35d9ff) !important;
+}
+
+/* ===== VELO V16 FINAL NEON OVERRIDE ===== */
+
+html,
+body {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(69,91,255,.20), transparent 32%),
+    radial-gradient(circle at 90% 20%, rgba(155,92,255,.18), transparent 30%),
+    linear-gradient(180deg, #070a18 0%, #03050d 100%) !important;
+  color: #f5f7ff !important;
+}
+
+body * {
+  color: inherit;
+}
+
+.topbar,
+.bottom-nav {
+  background: rgba(5,8,22,.88) !important;
+  border-color: rgba(91,104,255,.22) !important;
+}
+
+.topbar .logo,
+.logo {
+  color: #ffffff !important;
+  text-shadow:
+    0 0 10px rgba(77,124,255,.9),
+    0 0 28px rgba(155,92,255,.65) !important;
+}
+
+.hero h1,
+.menu h2,
+.stat-card strong,
+.menu-card b {
+  color: #ffffff !important;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg,#4d7cff,#9b5cff,#35d9ff) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+.hero .eyebrow {
+  color: #35d9ff !important;
+}
+
+.hero-text,
+.stat-card span,
+.menu-card small {
+  color: #8e9abb !important;
+}
+
+.simple-share,
+.stat-card,
+.menu-card {
+  background: linear-gradient(
+    145deg,
+    rgba(19,27,61,.94),
+    rgba(8,12,29,.94)
+  ) !important;
+  border-color: rgba(91,104,255,.28) !important;
+}
+
+.primary-btn {
+  background: linear-gradient(
+    135deg,
+    #4d7cff 0%,
+    #765cff 48%,
+    #a44fff 100%
+  ) !important;
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,.16) !important;
+}
+
+.nav-btn {
+  color: #717d9d !important;
+}
+
+.nav-btn.active {
+  color: #ffffff !important;
+}
+
+.nav-btn.active::before {
+  background: linear-gradient(90deg,#4d7cff,#9b5cff) !important;
+}
+
+
+/* ===== VELO V16 FINAL COLOR FIX ===== */
+
+:root {
+  --velo-green: #4d7cff !important;
+  --velo-green-border: rgba(91,104,255,.35) !important;
+}
+
+html, body {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(69,91,255,.20), transparent 32%),
+    radial-gradient(circle at 90% 20%, rgba(155,92,255,.18), transparent 30%),
+    linear-gradient(180deg, #070a18 0%, #03050d 100%) !important;
+  color: #f5f7ff !important;
+}
+
+.topbar,
+.bottom-nav {
+  background: rgba(5,8,22,.94) !important;
+  border-color: rgba(91,104,255,.30) !important;
+}
+
+.logo,
+.primary-btn,
+.profile-btn,
+.profile-stat strong,
+.adventure-main-title,
+.velo-index-card strong,
+.velo-explorer-card strong {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(77,124,255,.75) !important;
+}
+
+.stat-card,
+.menu-card,
+.velo-index-card,
+.velo-explorer-card,
+.simple-share {
+  background: linear-gradient(145deg, rgba(19,27,61,.96), rgba(8,12,29,.96)) !important;
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg,#4d7cff,#765cff,#a44fff) !important;
+  color: #fff !important;
+}
+
+.nav-btn {
+  color: #717d9d !important;
+}
+
+.nav-btn.active {
+  color: #fff !important;
+}
+
+.nav-btn.active::before {
+  background: linear-gradient(90deg,#4d7cff,#9b5cff) !important;
+}
+
+.progress,
+.progress-bar,
+.achievement-progress {
+  background: rgba(77,124,255,.14) !important;
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+.achievement-progress-bar,
+.progress-bar {
+  background: linear-gradient(90deg,#4d7cff,#9b5cff,#35d9ff) !important;
+}
+
+hr {
+  border-color: rgba(91,104,255,.30) !important;
+}
+
+::selection {
+  background: #4d7cff !important;
+  color: #fff !important;
+}
+
+
+/* ===== VELO V16 — FORCE BLUE PURPLE THEME ===== */
+
+:root {
+  --velo-green: #4d7cff !important;
+  --velo-green-soft: rgba(77,124,255,.16) !important;
+  --velo-green-border: rgba(91,104,255,.45) !important;
+}
+
+body,
+body * {
+  --velo-green: #4d7cff !important;
+  --velo-green-soft: rgba(77,124,255,.16) !important;
+  --velo-green-border: rgba(91,104,255,.45) !important;
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(69,91,255,.20), transparent 32%),
+    radial-gradient(circle at 90% 20%, rgba(155,92,255,.18), transparent 30%),
+    linear-gradient(180deg,#070a18 0%,#03050d 100%) !important;
+  color: #f5f7ff !important;
+}
+
+/* Old green UI elements */
+.logo,
+.profile-stat strong,
+.adventure-main-title,
+.velo-index-card strong,
+.velo-explorer-card strong,
+.stat-card strong,
+.menu-card b {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(77,124,255,.75) !important;
+}
+
+.topbar,
+.bottom-nav {
+  background: rgba(5,8,22,.94) !important;
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+.menu-card,
+.stat-card,
+.simple-share,
+.velo-index-card,
+.velo-explorer-card {
+  background: linear-gradient(145deg,rgba(19,27,61,.96),rgba(8,12,29,.96)) !important;
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+.primary-btn,
+.profile-btn {
+  background: linear-gradient(135deg,#4d7cff,#765cff,#a44fff) !important;
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,.16) !important;
+}
+
+.nav-btn.active {
+  color: #ffffff !important;
+}
+
+.nav-btn.active::before {
+  background: linear-gradient(90deg,#4d7cff,#9b5cff) !important;
+}
+
+.progress,
+.achievement-progress {
+  background: rgba(77,124,255,.14) !important;
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+.progress-bar,
+.achievement-progress-bar {
+  background: linear-gradient(90deg,#4d7cff,#9b5cff,#35d9ff) !important;
+}
+
+hr {
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+
+/* ===== VELO V16 FINAL — REMOVE OLD GREEN ===== */
+
+html,
+body {
+  background: #03050d !important;
+  color: #f5f7ff !important;
+}
+
+body * {
+  color: #f5f7ff !important;
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+.topbar,
+.bottom-nav {
+  background: rgba(5,8,22,.96) !important;
+}
+
+.logo,
+.hero h1,
+.hero h1 span,
+.menu h2,
+.stat-card strong,
+.menu-card b,
+.profile-stat strong,
+.adventure-main-title,
+.velo-index-card strong,
+.velo-explorer-card strong {
+  color: #ffffff !important;
+}
+
+.hero .eyebrow {
+  color: #35d9ff !important;
+}
+
+.hero-text,
+.stat-card span,
+.menu-card small {
+  color: #8e9abb !important;
+}
+
+.menu-card,
+.stat-card,
+.simple-share,
+.velo-index-card,
+.velo-explorer-card {
+  background: linear-gradient(145deg,#131b3d,#080c1d) !important;
+}
+
+.primary-btn,
+.profile-btn {
+  background: linear-gradient(135deg,#4d7cff,#765cff,#a44fff) !important;
+  color: #ffffff !important;
+}
+
+.nav-btn {
+  color: #717d9d !important;
+}
+
+.nav-btn.active {
+  color: #ffffff !important;
+}
+
+.nav-btn.active::before {
+  background: linear-gradient(90deg,#4d7cff,#9b5cff) !important;
+}
+
+.progress-bar,
+.achievement-progress-bar {
+  background: linear-gradient(90deg,#4d7cff,#9b5cff,#35d9ff) !important;
+}
+
+
+/* ===== VELO V16 FINAL COLOR FORCE ===== */
+
+html,
+body {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(69,91,255,.20), transparent 32%),
+    radial-gradient(circle at 90% 20%, rgba(155,92,255,.18), transparent 30%),
+    linear-gradient(180deg,#070a18 0%,#03050d 100%) !important;
+  color: #f5f7ff !important;
+}
+
+body {
+  --velo-green: #4d7cff !important;
+  --velo-green-soft: rgba(77,124,255,.16) !important;
+  --velo-green-border: rgba(91,104,255,.45) !important;
+}
+
+.topbar,
+.bottom-nav {
+  background: rgba(5,8,22,.96) !important;
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+.card,
+.menu-card,
+.stat-card,
+.simple-share,
+.profile-section,
+.premium-card,
+.bike-info-card,
+.achievement,
+.route-card,
+.adventure-card,
+.stats-card,
+.history-card,
+.modal,
+.panel,
+section {
+  background: linear-gradient(
+    145deg,
+    rgba(19,27,61,.96),
+    rgba(8,12,29,.96)
+  ) !important;
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+.logo,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b,
+.profile-stat strong {
+  color: #ffffff !important;
+}
+
+.hero .eyebrow {
+  color: #35d9ff !important;
+}
+
+.hero-text,
+.stat-card span,
+.menu-card small,
+p,
+small,
+label {
+  color: #8e9abb !important;
+}
+
+.primary-btn,
+.profile-btn,
+.save-profile-btn {
+  background: linear-gradient(
+    135deg,
+    #4d7cff,
+    #765cff,
+    #a44fff
+  ) !important;
+  color: #ffffff !important;
+  border-color: rgba(255,255,255,.16) !important;
+}
+
+.nav-btn {
+  color: #717d9d !important;
+}
+
+.nav-btn.active {
+  color: #ffffff !important;
+}
+
+.nav-btn.active::before {
+  background: linear-gradient(
+    90deg,
+    #4d7cff,
+    #9b5cff
+  ) !important;
+}
+
+input,
+textarea,
+select {
+  background: #050817 !important;
+  color: #ffffff !important;
+  border-color: rgba(91,104,255,.45) !important;
+}
+
+a {
+  color: #4d7cff !important;
+}
+
+.progress,
+.achievement-progress {
+  background: rgba(77,124,255,.14) !important;
+}
+
+.progress-bar,
+.achievement-progress-bar {
+  background: linear-gradient(
+    90deg,
+    #4d7cff,
+    #9b5cff,
+    #35d9ff
+  ) !important;
+}
+
+hr {
+  border-color: rgba(91,104,255,.35) !important;
+}
+
+/* Override old green text/borders */
+body .green,
+body .velo-green {
+  color: #4d7cff !important;
 }
 
